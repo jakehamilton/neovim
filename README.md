@@ -45,8 +45,7 @@ You can install this package by adding it as an input to your Nix flake.
 	description = "My system flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/release-22.05";
-		unstable.url = "github:nixos/nixpkgs/unstable";
+		nixpkgs.url = "github:nixos/nixpkgs";
 
 		# Snowfall is not required, but will make configuration easier for you.
 		snowfall-lib = {
@@ -57,7 +56,7 @@ You can install this package by adding it as an input to your Nix flake.
 		neovim = {
 			url = "github:jakehamilton/neovim";
 			# This flake currently requires changes that are only on the Unstable channel. 
-			inputs.nixpkgs.follows = "unstable";
+			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
 
@@ -66,21 +65,21 @@ You can install this package by adding it as an input to your Nix flake.
 			inherit inputs;
 			src = ./.;
 
-			# Use the overlay provided by this flake.
+			# Use the overlay provided by this flake. (Requires NixPkgs unstable currently)
 			overlays = with inputs; [
 				neovim.overlay
 			];
 
 			# Or access the package directly if you want.
 			outputs-builder = channels: {
-				packages.cool-neovim = inputs.neovim.packages.${channels.nixpkgs.system}.neovim;
+				packages.cool-neovim = inputs.neovim.packages.${channels.nixpkgs.system}.neovim-plusultra;
 			};
 		};
 }
 ```
 
 If you've added the overlay from this flake, then in your system configuration
-you can add the `plusultra.neovim` package.
+you can add the `neovim-plusultra` package.
 
 ```nix
 { pkgs }:
