@@ -16,8 +16,10 @@
 
       src = ./.;
 
+      overlay-package-namespace = "plusultra";
+
       outputs-builder = channels: {
-        packages.default = "neovim-plusultra";
+        packages.default = "neovim";
       };
     };
 }
