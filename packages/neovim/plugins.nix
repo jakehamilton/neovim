@@ -2,16 +2,16 @@
 
 let
   x = true;
-  icon-picker = neovimUtils.buildNeovimPluginFrom2Nix {
-    pname = "icon-picker.nvim";
-    version = "2022-09-03";
-    src = fetchFromGitHub {
-      owner = "ziontee113";
-      repo = "icon-picker.nvim";
-      rev = "0f3b2648f6f8e788bc8dfe37bc9bb18b565cfc3c";
-      sha256 = "15zygdg8g8jf1n75nclrbddvp9fz8k4jiczv0amgc7x1dy46cbvy";
-    };
-  };
+  # icon-picker = neovimUtils.buildNeovimPluginFrom2Nix {
+  #   pname = "icon-picker.nvim";
+  #   version = "2022-09-03";
+  #   src = fetchFromGitHub {
+  #     owner = "ziontee113";
+  #     repo = "icon-picker.nvim";
+  #     rev = "0f3b2648f6f8e788bc8dfe37bc9bb18b565cfc3c";
+  #     sha256 = "15zygdg8g8jf1n75nclrbddvp9fz8k4jiczv0amgc7x1dy46cbvy";
+  #   };
+  # };
 in
 with vimPlugins; [
   # Icons
@@ -104,5 +104,5 @@ with vimPlugins; [
   vim-tmux-navigator
 
   # Icon Picker
-  icon-picker
+  # icon-picker
 ]
