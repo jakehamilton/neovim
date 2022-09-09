@@ -1,4 +1,4 @@
-# ✨ Neovim PlusUltra ✨
+# ✨ Neovim Plus Ultra ✨
 
 <a href="https://nixos.wiki/wiki/Flakes" target="_blank">
 	<img alt="Nix Flakes Ready" src="https://img.shields.io/static/v1?logo=nixos&logoColor=d8dee9&label=Nix%20Flakes&labelColor=5e81ac&message=Ready&color=d8dee9&style=for-the-badge">
@@ -65,15 +65,15 @@ You can install this package by adding it as an input to your Nix flake.
 			inherit inputs;
 			src = ./.;
 
-			# Use the overlay provided by this flake. (Requires NixPkgs unstable currently)
 			overlays = with inputs; [
+				# Use the overlay provided by this flake. (Requires NixPkgs unstable currently)
 				neovim.overlay
-			];
 
-			# Or access the package directly if you want.
-			outputs-builder = channels: {
-				packages.cool-neovim = inputs.neovim.packages.${channels.nixpkgs.system}.neovim-plusultra;
-			};
+				# Or pull the package directly.
+				(final: prev: {
+					inherit (inputs.neovim.packages.${prev.system}) neovim-plusultra;
+				})
+			];
 		};
 }
 ```
