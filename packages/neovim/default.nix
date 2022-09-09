@@ -71,7 +71,7 @@ let
   };
 
   neovim-config-with-wrapper-args = neovim-config // {
-    wrapRc = false;
+    wrapRc = true;
     wrapperArgs =
       (lib.escapeShellArgs neovim-config.wrapperArgs) + " "
         + extra-make-wrapper-args + " " + extra-make-wrapper-lua-args + " "
