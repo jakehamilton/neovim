@@ -62,10 +62,14 @@ let
   '';
 
   neovim-config = neovimUtils.makeNeovimConfig {
+    viAlias = true;
+    vimAlias = true;
     extraPython3Packages = extra-python3-packages;
+
     withPython3 = true;
     withRuby = true;
     withNodeJs = true;
+
     plugins = builtins.map suppress-not-viml-config normalized-plugins;
     customRC = custom-rc;
   };
