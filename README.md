@@ -1,4 +1,4 @@
-# ✨ PlusUltra: Neovim ✨
+# ✨ Neovim PlusUltra ✨
 
 <a href="https://nixos.wiki/wiki/Flakes" target="_blank">
 	<img alt="Nix Flakes Ready" src="https://img.shields.io/static/v1?logo=nixos&logoColor=d8dee9&label=Nix%20Flakes&labelColor=5e81ac&message=Ready&color=d8dee9&style=for-the-badge">
@@ -68,7 +68,7 @@ You can install this package by adding it as an input to your Nix flake.
 
 			# Use the overlay provided by this flake.
 			overlays = with inputs; [
-				neovim.overlays."nixpkgs/plusultra"
+				neovim.overlay
 			];
 
 			# Or access the package directly if you want.
@@ -87,7 +87,7 @@ you can add the `plusultra.neovim` package.
 
 {
 	environment.systemPackages = with pkgs; [
-		plusultra.neovim
+		neovim-plusultra
 	];
 }
 ```
