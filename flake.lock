@@ -67,10 +67,10 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "snowfall": "snowfall"
+        "snowfall-lib": "snowfall-lib"
       }
     },
-    "snowfall": {
+    "snowfall-lib": {
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-utils-plus": "flake-utils-plus",
@@ -79,11 +79,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662632559,
-        "narHash": "sha256-mpCVa+2Nf0oeaQIFTIB9QkbBKL9GpmvDhBJnPvNmpCY=",
+        "lastModified": 1662700889,
+        "narHash": "sha256-94Xc3rRdS1plhRA4LtVbPW72KWrRuLkbtCxjGQFJ/TI=",
         "owner": "snowfallorg",
         "repo": "lib",
-        "rev": "415e664e8544b8080b4948b822d60945896167c8",
+        "rev": "9112e044050dc73b5a453f1f0d899b82bc4e1c43",
         "type": "github"
       },
       "original": {

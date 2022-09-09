@@ -4,14 +4,14 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
 
-    snowfall = {
+    snowfall-lib = {
       url = "github:snowfallorg/lib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs:
-    inputs.snowfall.mkFlake {
+    inputs.snowfall-lib.mkFlake {
       inherit inputs;
 
       src = ./.;
