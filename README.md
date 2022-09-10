@@ -17,6 +17,12 @@
 
 > Customized Neovim, ready for development out of the box.
 
+## Screenshots
+
+![Standard](https://user-images.githubusercontent.com/7005773/189502030-d8f190d1-1ff9-4244-ba25-c47ffcde887f.png)
+![Diagnostics](https://user-images.githubusercontent.com/7005773/189502035-9d09ca7c-82da-4537-8bab-d08d460b439c.png)
+![Dashboard](https://user-images.githubusercontent.com/7005773/189502036-64e939c8-1f53-40dc-a781-8cf37ec3d57d.png)
+
 ## Try Without Installing
 
 You can try this configuration out without committing to installing it on your system by running
