@@ -24,7 +24,7 @@ local on_attach = function(client, buffer)
 			n = { "<cmd>lua require('illuminate').next_reference{wrap=true}<cr>", "Go to next occurrence" },
 			p = { "<cmd>lua require('illuminate').next_reference{reverse=true,wrap=true}<cr>", "Go to previous occurrence" },
 			r = { "<cmd>lua vim.lsp.buf.references()<cr>", "Go to references" },
-			t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Go to type definition" },
+			-- t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Go to type definition" },
 			["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help" }
 		},
 		["["] = {
