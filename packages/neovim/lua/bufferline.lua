@@ -7,8 +7,12 @@ local severities = {
 	"warning"
 }
 
-local tab_visible = {
+local fill = {
 	bg = "#2e3440",
+}
+
+local tab_visible = {
+	bg = fill.bg,
 }
 
 local tab_selected = {
@@ -16,12 +20,12 @@ local tab_selected = {
 }
 
 local separator_visible = {
-	fg = tab_visible.bg,
-	bg = tab_visible.bg,
+	fg = fill.bg,
+	bg = fill.bg,
 }
 
 local separator_selected = {
-	fg = tab_visible.bg,
+	fg = fill.bg,
 	bg = tab_selected.bg,
 }
 
@@ -49,16 +53,19 @@ require("bufferline").setup {
 		},
 	},
 	highlights = {
+		fill = fill,
+		background = tab_visible,
+
 		separator = separator_visible,
 		separator_visible = separator_visible,
 		separator_selected = separator_selected,
+
 		tab = tab_visible,
 		tab_selected = tab_selected,
+
 		buffer = tab_visible,
 		buffer_visible = tab_visible,
 		buffer_selected = tab_selected,
-
-		background = tab_visible,
 	},
 }
 
