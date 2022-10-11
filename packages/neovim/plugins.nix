@@ -11,6 +11,16 @@ let
       sha256 = "15zygdg8g8jf1n75nclrbddvp9fz8k4jiczv0amgc7x1dy46cbvy";
     };
   };
+  telescope-manix = vimUtils.buildVimPluginFrom2Nix {
+    pname = "telescope-manix";
+    version = "2022-10-10";
+    src = fetchFromGitHub {
+      owner = "mrcjkb";
+      repo = "telescope-manix";
+      rev = "b254c28d7d793fe93cfaccf9bd53493a0c579e3b";
+      sha256 = "059qfrvd7bigqkkjc5g6wdrzb7a7x37xxnx99hx236sxraihaka7";
+    };
+  };
 in
 with vimPlugins; [
   # Icons
@@ -32,6 +42,7 @@ with vimPlugins; [
   telescope-nvim
   telescope-symbols-nvim
   telescope-project-nvim
+  telescope-manix
 
   # Language Server
   nvim-lspconfig

@@ -23,6 +23,9 @@ with pkgs; [
   # Utility
   ripgrep
 
+  # Documentation
+  manix
+
   # Misc
   lua5_1
 ]

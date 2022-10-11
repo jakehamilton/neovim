@@ -18,47 +18,61 @@ theme.inactive.c.bg = colors.black
 -- the status line. Without this, the background of the first and
 -- last characters are not written correctly.
 local empty = {
-  function() return ' ' end,
-  padding = 0,
-  color = 'Normal',
+	function() return ' ' end,
+	padding = 0,
+	color = 'Normal',
+}
+
+local filename = {
+	'filename',
+	file_status = true,
+	path = 1, -- Show relative path.
+	shorting_target = 25, -- Leave 25 characters for other things in the status line.
+
+	symbols = {
+		modified = '[+]',
+		readonly = '[-]',
+		unnamed = '[No Name]',
+		newfile = '[New]',
+	},
 }
 
 require("lualine").setup {
-  extensions = { "quickfix", "nvim-tree", "toggleterm", "fzf" },
-  options = {
-    theme = theme,
-    component_separators = "",
-    section_separators = { left = "", right = "" },
-  },
-  sections = {
-    lualine_a = {
-      empty,
-      { "mode", separator = { left = "", right = "" }, right_padding = 2 },
-    },
-    lualine_b = { "filename", "branch" },
-    lualine_c = { "fileformat", "diagnostics", "lsp_progress" },
-    lualine_x = {},
-    lualine_y = { "filetype", "progress" },
-    lualine_z = {
-      { "location", separator = { left = "", right = "" }, left_padding = 2,
-        color = { fg = colors.white, bg = colors.off_blue } },
-      empty,
-    },
-  },
-  inactive_sections = {
-    lualine_a = {
-      empty,
-      { "mode", separator = { left = "", right = "" }, right_padding = 2 },
-    },
-    lualine_b = { "filename", "branch" },
-    lualine_c = { "fileformat", "diagnostics", "lsp_progress" },
-    lualine_x = {},
-    lualine_y = { "filetype", "progress" },
-    lualine_z = {
-      { "location", separator = { left = "", right = "" }, left_padding = 2,
-        color = { fg = colors.white, bg = colors.off_blue } },
-      empty,
-    },
-  },
-  tabline = {},
+	extensions = { "quickfix", "nvim-tree", "toggleterm", "fzf" },
+	options = {
+		theme = theme,
+		component_separators = "",
+		section_separators = { left = "", right = "" },
+	},
+	sections = {
+		lualine_a = {
+			empty,
+			{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
+		},
+		lualine_b = { filename, "branch" },
+		lualine_c = { "fileformat", "diagnostics", "lsp_progress" },
+		lualine_x = {},
+		lualine_y = { "filetype", "progress" },
+		lualine_z = {
+			{ "location", separator = { left = "", right = "" }, left_padding = 2,
+				color = { fg = colors.white, bg = colors.off_blue } },
+			empty,
+		},
+	},
+	inactive_sections = {
+		lualine_a = {
+			empty,
+			{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
+		},
+		lualine_b = { filename, "branch" },
+		lualine_c = { "fileformat", "diagnostics", "lsp_progress" },
+		lualine_x = {},
+		lualine_y = { "filetype", "progress" },
+		lualine_z = {
+			{ "location", separator = { left = "", right = "" }, left_padding = 2,
+				color = { fg = colors.white, bg = colors.off_blue } },
+			empty,
+		},
+	},
+	tabline = {},
 }

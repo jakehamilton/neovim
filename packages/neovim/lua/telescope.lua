@@ -1,6 +1,11 @@
 local which_key = require("which-key")
+local telescope = require("telescope")
 
-require("telescope").setup {
+-- Import manix so that Telescope can load it properly.
+---@diagnostic disable-next-line: unused-local
+local manix = require("telescope-manix")
+
+telescope.setup {
 	defaults = {
 		mappings = {
 			i = {
@@ -10,6 +15,8 @@ require("telescope").setup {
 	},
 }
 
+telescope.load_extension("manix")
+
 which_key.register({
 	f = {
 		name = "File",
@@ -17,5 +24,6 @@ which_key.register({
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent File" },
 		g = { "<cmd>Telescope live_grep<cr>", "Grep" },
 		b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
+		n = { "<cmd>Telescope manix<cr>", "Nix Documentation" },
 	},
 }, { mode = "n", prefix = "<leader>", silent = true })
