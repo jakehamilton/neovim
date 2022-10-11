@@ -13,21 +13,28 @@ local fill = {
 
 local tab_visible = {
 	bg = fill.bg,
+	italic = false,
 }
 
 local tab_selected = {
 	bg = "#3b4252",
+	italic = false,
 }
 
 local separator_visible = {
 	fg = fill.bg,
 	bg = fill.bg,
+	italic = false,
 }
 
 local separator_selected = {
 	fg = fill.bg,
 	bg = tab_selected.bg,
+	italic = false,
 }
+
+local duplicate_visible = tab_visible
+local duplicate_selected = tab_selected
 
 require("bufferline").setup {
 	options = {
@@ -66,6 +73,10 @@ require("bufferline").setup {
 		buffer = tab_visible,
 		buffer_visible = tab_visible,
 		buffer_selected = tab_selected,
+
+		duplicate = duplicate_visible,
+		duplicate_visible = duplicate_visible,
+		duplicate_selected = duplicate_selected,
 	},
 }
 
