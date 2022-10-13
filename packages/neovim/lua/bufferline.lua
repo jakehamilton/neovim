@@ -1,4 +1,5 @@
 local which_key = require("which-key")
+local colors = require("nord.named_colors")
 
 local signs = { error = " ", warning = " ", hint = " ", info = " " }
 
@@ -8,7 +9,7 @@ local severities = {
 }
 
 local fill = {
-	bg = "#2e3440",
+	bg = colors.black,
 }
 
 local tab_visible = {
@@ -17,7 +18,7 @@ local tab_visible = {
 }
 
 local tab_selected = {
-	bg = "#3b4252",
+	bg = colors.dark_gray,
 	italic = false,
 }
 
@@ -35,6 +36,64 @@ local separator_selected = {
 
 local duplicate_visible = tab_visible
 local duplicate_selected = tab_selected
+
+local numbers_visible = {
+	bg = tab_visible.bg,
+}
+local numbers_selected = {
+	bg = tab_selected.bg,
+}
+
+local diagnostic_visible = {
+	bg = tab_visible.bg,
+}
+local diagnostic_selected = {
+	bg = tab_selected.bg,
+}
+
+local modified_visible = {
+	bg = tab_visible.bg,
+}
+local modified_selected = {
+	bg = tab_selected.bg,
+}
+
+local pick_visible = {
+	bg = tab_visible.bg,
+}
+local pick_selected = {
+	bg = tab_selected.bg,
+}
+
+local error_visible = {
+	bg = tab_visible.bg,
+	fg = colors.red,
+}
+local error_selected = {
+	bg = tab_selected.bg,
+	fg = colors.red,
+}
+
+local warning_visible = {
+	bg = tab_visible.bg,
+}
+local warning_selected = {
+	bg = tab_selected.bg,
+}
+
+local info_visible = {
+	bg = tab_visible.bg,
+}
+local info_selected = {
+	bg = tab_selected.bg,
+}
+
+local hint_visible = {
+	bg = tab_visible.bg,
+}
+local hint_selected = {
+	bg = tab_selected.bg,
+}
 
 require("bufferline").setup {
 	options = {
@@ -74,9 +133,53 @@ require("bufferline").setup {
 		buffer_visible = tab_visible,
 		buffer_selected = tab_selected,
 
+		numbers = numbers_visible,
+		numbers_visible = numbers_visible,
+		numbers_selected = numbers_selected,
+
 		duplicate = duplicate_visible,
 		duplicate_visible = duplicate_visible,
 		duplicate_selected = duplicate_selected,
+
+		diagnostic = diagnostic_visible,
+		diagnostic_visible = diagnostic_visible,
+		diagnostic_selected = diagnostic_selected,
+
+		modified = modified_visible,
+		modified_visible = modified_visible,
+		modified_selected = modified_selected,
+
+		pick = pick_visible,
+		pick_visible = pick_visible,
+		pick_selected = pick_selected,
+
+		error = error_visible,
+		error_visible = error_visible,
+		error_selected = error_selected,
+		error_diagnostic = error_visible,
+		error_diagnostic_visible = error_visible,
+		error_diagnostic_selected = error_selected,
+
+		warning = warning_visible,
+		warning_visible = warning_visible,
+		warning_selected = warning_selected,
+		warning_diagnostic = warning_visible,
+		warning_diagnostic_visible = warning_visible,
+		warning_diagnostic_selected = warning_selected,
+
+		info = info_visible,
+		info_visible = info_visible,
+		info_selected = info_selected,
+		info_diagnostic = info_visible,
+		info_diagnostic_visible = info_visible,
+		info_diagnostic_selected = info_selected,
+
+		hint = hint_visible,
+		hint_visible = hint_visible,
+		hint_selected = hint_selected,
+		hint_diagnostic = hint_visible,
+		hint_diagnostic_visible = hint_visible,
+		hint_diagnostic_selected = hint_selected,
 	},
 }
 
