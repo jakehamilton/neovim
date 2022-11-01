@@ -1,9 +1,9 @@
-{ lib, vimPlugins, vimUtils, fetchFromGitHub, tree-sitter, ... }:
+{ lib, pkgs, vimPlugins, vimUtils, fetchFromGitHub, tree-sitter, callPackage, ... }:
 
 let
   icon-picker = vimUtils.buildVimPluginFrom2Nix {
     pname = "icon-picker.nvim";
-    version = "2022-09-03";
+    version = "unstable-2022-09-03";
     src = fetchFromGitHub {
       owner = "ziontee113";
       repo = "icon-picker.nvim";
@@ -13,7 +13,7 @@ let
   };
   telescope-manix = vimUtils.buildVimPluginFrom2Nix {
     pname = "telescope-manix";
-    version = "2022-10-10";
+    version = "unstable-2022-10-10";
     src = fetchFromGitHub {
       owner = "mrcjkb";
       repo = "telescope-manix";
@@ -35,7 +35,7 @@ with vimPlugins; [
   # Utility
   plenary-nvim
   vim-bufkill
-  lua-dev-nvim
+  neodev-nvim
   dressing-nvim
 
   # Telescope

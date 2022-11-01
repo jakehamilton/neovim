@@ -5,6 +5,18 @@ local illuminate = require("illuminate")
 
 local which_key = require("which-key")
 
+-- @NOTE(jakehamilton): The `neodev` module requires that it is run
+-- before `lspconfig` setup.
+require("neodev").setup {
+	lspconfig = true,
+	library = {
+		enabled = true,
+		plugins = true,
+		runtime = true,
+		types = true,
+	},
+}
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer.
 local on_attach = function(client, buffer)
@@ -67,8 +79,7 @@ end
 -- 	adding yaml-language-server.
 -- lsp.yamlls.setup {}
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Configure servers with common settings.
 local servers = {
@@ -128,25 +139,21 @@ lsp.dockerls.setup {
 }
 
 -- Lua
-local luadev = require("lua-dev").setup {
-	lspconfig = {
-		on_attach = on_attach,
-		cmd = { "lua-language-server" },
-		settings = {
-			Lua = {
-				telemetry = {
-					enable = false,
-				},
-				format = {
-					enable = true,
-				}
+lsp.sumneko_lua.setup {
+	on_attach = on_attach,
+	cmd = { "lua-language-server" },
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			telemetry = {
+				enable = false,
 			},
+			format = {
+				enable = false,
+			}
 		},
-		capabilities = capabilities,
 	},
 }
-
-lsp.sumneko_lua.setup(luadev)
 
 -- Publish diagnostics from the language servers.
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
