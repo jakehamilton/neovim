@@ -1,6 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local lsp = require("lspconfig")
+local null_ls = require("null-ls")
 local illuminate = require("illuminate")
 
 local which_key = require("which-key")
@@ -20,6 +21,17 @@ require("neodev").setup {
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer.
 local on_attach = function(client, buffer)
+	-- Disable formatting from duplicate providers	
+	if
+		client.name == "tsserver"
+		or client.name == "html"
+		or client.name == "cssls"
+		or client.name == "jsonls"
+	then
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+	end
+
 	illuminate.on_attach(client)
 
 	-- Enable completion triggered by <c-x><c-o>
@@ -57,7 +69,7 @@ local on_attach = function(client, buffer)
 		c = {
 			name = "Code",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
-			f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+			f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
 			r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		}
 	}, { buffer = buffer, mode = "n", prefix = "<leader>", noremap = true, silent = true })
@@ -108,6 +120,9 @@ lsp.eslint.setup {
 	on_attach = on_attach,
 	cmd = { "@eslintLanguageServer@", "--stdio" },
 	capabilities = capabilities,
+	settings = {
+		format = false,
+	},
 }
 
 -- JSON
@@ -149,10 +164,79 @@ lsp.sumneko_lua.setup {
 				enable = false,
 			},
 			format = {
-				enable = false,
+				enable = true,
 			}
 		},
 	},
+}
+
+-- Prettier
+local function is_null_ls_formatting_enabed(bufnr)
+    local file_type = vim.api.nvim_buf_get_option(bufnr, "filetype")
+    local generators = require("null-ls.generators").get_available(
+        file_type,
+        require("null-ls.methods").internal.FORMATTING
+    )
+    return #generators > 0
+end
+
+null_ls.setup {
+	---@diagnostic disable-next-line: unused-local
+	on_attach = function(client, bufnr)
+		if client.server_capabilities.documentFormattingProvider then
+			if
+				client.name == "null-ls" and is_null_ls_formatting_enabed(bufnr)
+				or client.name ~= "null-ls"
+			then
+					vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+			else
+					vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+			end
+
+			-- vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.format({async = true})")
+		end
+
+		-- if client.server_capabilities.documentRangeFormattingProvider then
+		-- 	vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.formatexpr()")
+		-- end
+	end
+}
+
+local prettier = require("prettier")
+
+prettier.setup {
+	bin = "prettier",
+	filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+	},
+	cli_options = {
+		-- Default to *only* config given in a project, unless none exists.
+		config_precedence = "prefer-file",
+
+		-- Prettier config if no project specific configuration is found.
+		use_tabs = true,
+		print_width = 120,
+	},
+	["null-ls"] = {
+		condition = function()
+			return true
+			-- return prettier.config_exists({
+			-- 	check_package_json = false,
+			-- })
+		end,
+		timeout = 5000,
+	}
 }
 
 -- Publish diagnostics from the language servers.
@@ -178,8 +262,7 @@ vim.api.nvim_create_autocmd(
 	{
 		pattern = { "*" },
 		callback = function()
-			---@diagnostic disable-next-line: missing-parameter
-			vim.lsp.buf.formatting_sync()
+			vim.lsp.buf.format()
 		end,
 	}
 )

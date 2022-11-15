@@ -21,6 +21,16 @@ let
       sha256 = "059qfrvd7bigqkkjc5g6wdrzb7a7x37xxnx99hx236sxraihaka7";
     };
   };
+  prettier-nvim = vimUtils.buildVimPluginFrom2Nix {
+    pname = "prettier.nvim";
+    version = "unstable-2022-11-14";
+    src = fetchFromGitHub {
+      owner = "MunifTanjim";
+      repo = "prettier.nvim";
+      rev = "6f19a4f68e7cce31a244c9479d47cce0c2a8f135";
+      sha256 = "1dh29q778b58rvyhqidfixs7gx0n40y650k8jgj2iq4674frxmvj";
+    };
+  };
 in
 with vimPlugins; [
   # Icons
@@ -46,9 +56,11 @@ with vimPlugins; [
 
   # Language Server
   nvim-lspconfig
+  null-ls-nvim
   lsp-colors-nvim
   nvim-jdtls
   trouble-nvim
+  prettier-nvim
 
   # Autocomplete
   nvim-cmp
