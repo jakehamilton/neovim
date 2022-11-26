@@ -91,5 +91,6 @@ mkLuaConfigs [
   ./twilight.lua
   ./vim.lua
   ./which-key.lua
+  ./wrap-toggle.lua
 ]
 

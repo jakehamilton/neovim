@@ -11,6 +11,9 @@ vim.opt.shiftwidth = 2
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
 -- Enable spell checking.
 vim.api.nvim_create_autocmd(
 	{ "BufRead", "BufNewFile" },
@@ -19,10 +22,3 @@ vim.api.nvim_create_autocmd(
 		command = "setlocal spell",
 	}
 )
-
--- Use <C-Space> to open up autocompletion.
--- @NOTE(jakehamilton): This is now handled by cmp-nvim.
--- vim.api.nvim_set_keymap("i", "<C-Space>", "<C-x><C-o>", {
--- 	silent = true,
--- 	noremap = true,
--- })
