@@ -10,15 +10,34 @@ gitsigns.setup {
 		changedelete = { text = "~" },
 	},
 	signcolumn = true,
+	numhl = false,
+	linehl = false,
+	word_diff = false,
+	current_line_blame = true,
+	attach_to_untracked = true,
+
+	-- Workaround autoformatting on save which makes Gitsigns process twice without delay.
+	update_debounce = 10,
+
 	on_attach = function(bufnr)
-		which_key.register({
-			["]"] = {
-				c = { "&diff ? ']c' : '<cmd>Gitsigns next_hunk<cr>'" },
-			},
-			["["] = {
-				c = { "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<cr>'" }
-			},
-		}, { mode = "n", buffer = bufnr })
+		local function map(mode, l, r, opts)
+			opts = opts or {}
+			opts.buffer = bufnr
+			vim.keymap.set(mode, l, r, opts)
+		end
+
+		-- Navigation
+		map('n', ']c', function()
+			if vim.wo.diff then return ']c' end
+			vim.schedule(function() gitsigns.next_hunk() end)
+			return '<Ignore>'
+		end, { expr = true })
+
+		map('n', '[c', function()
+			if vim.wo.diff then return '[c' end
+			vim.schedule(function() gitsigns.prev_hunk() end)
+			return '<Ignore>'
+		end, { expr = true })
 
 		which_key.register({
 			h = {
