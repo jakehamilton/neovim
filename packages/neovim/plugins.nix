@@ -54,9 +54,9 @@ let
     version = "unstable-2022-11-26";
     src = fetchFromGitHub {
       owner = "jakehamilton";
-      repo = "nvim-ts-dotbox";
-      rev = "9ecb64d5bba8ad8d60062a2efd8a1f8012c5be68";
-      sha256 = "0vnrhqz1wx6z2rqjbdmzl3wpf9nlxsqb4r4f563xw40i95w3nhvh";
+      repo = "dotbox.nvim";
+      rev = "4d6eaee93f7a890a0ef5d993ff00a05af48c1374";
+      sha256 = "0s65xsrqkjdy4zmqxh2gn17kh1d2b7w2jvwa6hrrw1nag4h6cids";
     };
   };
 in
@@ -152,7 +152,7 @@ with vimPlugins; [
   vim-markdown-toc
 
   # Dotbox
-  # dotbox-nvim
+  dotbox-nvim
 
   # Tmux
   vim-tmux-navigator
