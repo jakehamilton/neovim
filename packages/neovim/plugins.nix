@@ -31,6 +31,16 @@ let
       sha256 = "1dh29q778b58rvyhqidfixs7gx0n40y650k8jgj2iq4674frxmvj";
     };
   };
+  tree-sitter-playground = vimUtils.buildVimPluginFrom2Nix {
+    pname = "tree-sitter-playground";
+    version = "unstable-2022-11-26";
+    src = fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "playground";
+      rev = "1290fdf6f2f0189eb3b4ce8073d3fda6a3658376";
+      sha256 = "1yznmc5a32b4bw0c9q0jfkbd77xmi7rmihfr0f44bcgqdxlp8151";
+    };
+  };
 in
 with vimPlugins; [
   # Icons
@@ -41,6 +51,7 @@ with vimPlugins; [
   nvim-ts-rainbow
   (nvim-treesitter.withPlugins
     (plugins: tree-sitter.allGrammars))
+  tree-sitter-playground
 
   # Utility
   plenary-nvim
