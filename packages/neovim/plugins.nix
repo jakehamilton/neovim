@@ -152,7 +152,7 @@ with vimPlugins; [
   vim-markdown-toc
 
   # Dotbox
-  dotbox-nvim
+  # dotbox-nvim
 
   # Tmux
   vim-tmux-navigator
