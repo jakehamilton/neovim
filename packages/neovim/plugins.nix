@@ -1,4 +1,12 @@
-{ lib, pkgs, vimPlugins, vimUtils, fetchFromGitHub, tree-sitter, callPackage, ... }:
+{ lib
+, pkgs
+, vimPlugins
+, vimUtils
+, fetchFromGitHub
+, tree-sitter
+, callPackage
+, ...
+}:
 
 let
   icon-picker = vimUtils.buildVimPluginFrom2Nix {
@@ -39,6 +47,16 @@ let
       repo = "playground";
       rev = "1290fdf6f2f0189eb3b4ce8073d3fda6a3658376";
       sha256 = "1yznmc5a32b4bw0c9q0jfkbd77xmi7rmihfr0f44bcgqdxlp8151";
+    };
+  };
+  dotbox-nvim = vimUtils.buildVimPluginFrom2Nix {
+    pname = "dotbox.nvim";
+    version = "unstable-2022-11-26";
+    src = fetchFromGitHub {
+      owner = "jakehamilton";
+      repo = "nvim-ts-dotbox";
+      rev = "9ecb64d5bba8ad8d60062a2efd8a1f8012c5be68";
+      sha256 = "0vnrhqz1wx6z2rqjbdmzl3wpf9nlxsqb4r4f563xw40i95w3nhvh";
     };
   };
 in
@@ -132,6 +150,9 @@ with vimPlugins; [
   markdown-preview-nvim
   vim-markdown
   vim-markdown-toc
+
+  # Dotbox
+  dotbox-nvim
 
   # Tmux
   vim-tmux-navigator
