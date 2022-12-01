@@ -14,6 +14,9 @@ vim.opt.relativenumber = true
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+-- We're professionals here.
+vim.opt.mouse = ""
+
 -- Enable spell checking.
 vim.api.nvim_create_autocmd(
 	{ "BufRead", "BufNewFile" },

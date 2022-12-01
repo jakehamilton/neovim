@@ -2,6 +2,7 @@
 , substituteAll
 , symlinkJoin
 , nodePackages
+, prisma-engines
 , makeWrapper
 , runCommand
 , ...
@@ -76,6 +77,8 @@ mkLuaConfigs [
       cssLanguageServer = "${nodePackages.vscode-langservers-extracted}/bin/vscode-css-language-server";
       jsonLanguageServer = "${nodePackages.vscode-langservers-extracted}/bin/vscode-json-language-server";
       dockerLanguageServer = "${nodePackages.dockerfile-language-server-nodejs}/bin/docker-langserver";
+      prismaLanguageServer = "${nodePackages.prisma-language-server}/lib/node_modules/@prisma/language-server/dist/src/bin.js";
+      prismaFormat = "${prisma-engines}/bin/prisma-fmt";
     };
   }
   ./lualine.lua

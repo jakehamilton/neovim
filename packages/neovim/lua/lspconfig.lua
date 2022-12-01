@@ -152,6 +152,18 @@ lsp.dockerls.setup {
 	capabilities = capabilities,
 }
 
+-- Prisma
+lsp.prismals.setup {
+	on_attach = on_attach,
+	cmd = { "@prismaLanguageServer@", "--stdio" },
+	capabilities = capabilities,
+	settings = {
+		prisma = {
+			prismaFmtBinPath = "@prismaFormat@";
+		}
+	},
+}
+
 -- Lua
 lsp.sumneko_lua.setup {
 	on_attach = on_attach,

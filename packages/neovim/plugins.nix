@@ -159,4 +159,7 @@ with vimPlugins; [
 
   # Icon Picker
   icon-picker
+
+  # Prisma
+  vim-prisma
 ]

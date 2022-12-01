@@ -26,6 +26,9 @@ with pkgs; [
   # Documentation
   manix
 
-  # Misc
+  # Lua
   lua5_1
+
+  # Node
+  nodejs-16_x
 ]
