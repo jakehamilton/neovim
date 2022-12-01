@@ -21,12 +21,11 @@ require("neodev").setup {
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer.
 local on_attach = function(client, buffer)
-	-- Disable formatting from duplicate providers	
-	if
-		client.name == "tsserver"
-		or client.name == "html"
-		or client.name == "cssls"
-		or client.name == "jsonls"
+	-- Disable formatting from duplicate providers
+	if client.name == "tsserver"
+			or client.name == "html"
+			or client.name == "cssls"
+			or client.name == "jsonls"
 	then
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
@@ -69,7 +68,7 @@ local on_attach = function(client, buffer)
 		c = {
 			name = "Code",
 			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
-			f = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format" },
+			f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
 			r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		}
 	}, { buffer = buffer, mode = "n", prefix = "<leader>", noremap = true, silent = true })
@@ -160,11 +159,17 @@ lsp.sumneko_lua.setup {
 	capabilities = capabilities,
 	settings = {
 		Lua = {
+			globals = {
+				"vim",
+			},
 			telemetry = {
 				enable = false,
 			},
 			format = {
 				enable = true,
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
 			}
 		},
 	},
@@ -172,25 +177,24 @@ lsp.sumneko_lua.setup {
 
 -- Prettier
 local function is_null_ls_formatting_enabed(bufnr)
-    local file_type = vim.api.nvim_buf_get_option(bufnr, "filetype")
-    local generators = require("null-ls.generators").get_available(
-        file_type,
-        require("null-ls.methods").internal.FORMATTING
-    )
-    return #generators > 0
+	local file_type = vim.api.nvim_buf_get_option(bufnr, "filetype")
+	local generators = require("null-ls.generators").get_available(
+		file_type,
+		require("null-ls.methods").internal.FORMATTING
+	)
+	return #generators > 0
 end
 
 null_ls.setup {
 	---@diagnostic disable-next-line: unused-local
 	on_attach = function(client, bufnr)
 		if client.server_capabilities.documentFormattingProvider then
-			if
-				client.name == "null-ls" and is_null_ls_formatting_enabed(bufnr)
-				or client.name ~= "null-ls"
+			if client.name == "null-ls" and is_null_ls_formatting_enabed(bufnr)
+					or client.name ~= "null-ls"
 			then
-					vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+				vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
 			else
-					vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+				vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
 			end
 
 			-- vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.format({async = true})")
@@ -207,18 +211,18 @@ local prettier = require("prettier")
 prettier.setup {
 	bin = "prettier",
 	filetypes = {
-    "css",
-    "graphql",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "less",
-    "markdown",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "yaml",
+		"css",
+		"graphql",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"less",
+		"markdown",
+		"scss",
+		"typescript",
+		"typescriptreact",
+		"yaml",
 	},
 	cli_options = {
 		-- Default to *only* config given in a project, unless none exists.
@@ -256,13 +260,14 @@ for type, icon in pairs(signs) do
 end
 
 -- Auto format.
--- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 vim.api.nvim_create_autocmd(
 	{ "BufWritePre" },
 	{
 		pattern = { "*" },
 		callback = function()
-			vim.lsp.buf.format()
+			vim.lsp.buf.format {
+				timeout = 500,
+			}
 		end,
 	}
 )
