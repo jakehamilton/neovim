@@ -15,9 +15,10 @@ let
       chmod +x "$file"
     '';
   };
+  tailwindcss-language-server = node-packages."@tailwindcss/language-server";
 in
 {
   nodePackages = prev.nodePackages // {
-    inherit prisma-language-server;
+    inherit prisma-language-server tailwindcss-language-server;
   };
 }

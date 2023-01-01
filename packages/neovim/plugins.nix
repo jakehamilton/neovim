@@ -129,7 +129,9 @@ with vimPlugins; [
   # Status Line & Buffer Line
   lualine-nvim
   lualine-lsp-progress
+  scope-nvim
   bufferline-nvim
+  nvim-navic
 
   # Termianl
   toggleterm-nvim

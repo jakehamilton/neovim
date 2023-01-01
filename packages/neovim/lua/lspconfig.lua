@@ -3,6 +3,7 @@
 local lsp = require("lspconfig")
 local null_ls = require("null-ls")
 local illuminate = require("illuminate")
+local navic = require("nvim-navic")
 
 local which_key = require("which-key")
 
@@ -29,6 +30,10 @@ local on_attach = function(client, buffer)
 	then
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
+	end
+
+	if client.server_capabilities.documentSymbolProvider then
+		navic.attach(client, buffer)
 	end
 
 	illuminate.on_attach(client)
@@ -73,10 +78,6 @@ local on_attach = function(client, buffer)
 		}
 	}, { buffer = buffer, mode = "n", prefix = "<leader>", noremap = true, silent = true })
 end
-
--- @TODO(jakehamilton): Add support for tailwind. Requires
--- 	adding @tailwindcss/language-server.
--- lsp.tailwindcss.setup {}
 
 -- @TODO(jakehamilton): Add support for cssmodules. Requires
 -- 	adding cssmodules-language-server.
@@ -162,6 +163,13 @@ lsp.prismals.setup {
 			prismaFmtBinPath = "@prismaFormat@";
 		}
 	},
+}
+
+-- Tailwind
+lsp.tailwindcss.setup {
+	on_attach = on_attach,
+	cmd = { "@tailwindLanguageServer@", "--stdio" },
+	capabilities = capabilities,
 }
 
 -- Lua

@@ -59,6 +59,7 @@ let
 in
 mkLuaConfigs [
   ./bufferline.lua
+  ./scope.lua
   ./cmp.lua
   ./dashboard.lua
   ./fzf.lua
@@ -79,6 +80,7 @@ mkLuaConfigs [
       dockerLanguageServer = "${nodePackages.dockerfile-language-server-nodejs}/bin/docker-langserver";
       prismaLanguageServer = "${nodePackages.prisma-language-server}/lib/node_modules/@prisma/language-server/dist/src/bin.js";
       prismaFormat = "${prisma-engines}/bin/prisma-fmt";
+      tailwindLanguageServer = "${nodePackages.tailwindcss-language-server}/bin/tailwindcss-language-server";
     };
   }
   ./lualine.lua

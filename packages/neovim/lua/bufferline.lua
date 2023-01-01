@@ -95,6 +95,17 @@ local hint_selected = {
 	bg = tab_selected.bg,
 }
 
+
+local tab_separator = {
+	fg = tab_visible.bg,
+	bg = tab_visible.bg,
+}
+
+local tab_separator_selected = {
+	fg = tab_selected.bg,
+	bg = tab_visible.fg,
+}
+
 require("bufferline").setup {
 	options = {
 		mode = "buffers",
@@ -128,6 +139,8 @@ require("bufferline").setup {
 
 		tab = tab_visible,
 		tab_selected = tab_selected,
+		tab_separator = tab_separator,
+		tab_separator_selected = tab_separator_selected,
 
 		buffer = tab_visible,
 		buffer_visible = tab_visible,
