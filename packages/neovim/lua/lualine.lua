@@ -129,6 +129,36 @@ require("lualine").setup {
 		lualine_a = {},
 		lualine_b = {
 			empty,
+			{ "diagnostics", separator = { left = "", right = "" }, },
+		},
+		lualine_c = {
+			{ navic.get_location, cond = navic.is_available },
+		},
+		lualine_x = {},
+		lualine_y = {
+			{
+				'filename',
+				file_status = true,
+				path = 1, -- Show relative path.
+				shorting_target = 25, -- Leave 25 characters for other things in the status line.
+
+				symbols = {
+					modified = '[+]',
+					readonly = '[-]',
+					unnamed = '[No Name]',
+					newfile = '[New]',
+				},
+
+				separator = { left = "", right = "" },
+			},
+			empty
+		},
+		lualine_z = {},
+	},
+	inactive_winbar = {
+		lualine_a = {},
+		lualine_b = {
+			empty,
 			-- {
 			-- 	function() return ' ' end,
 			-- 	padding = 0,
@@ -137,10 +167,7 @@ require("lualine").setup {
 			-- },
 			{ "diagnostics", separator = { left = "", right = "" }, },
 		},
-		lualine_c = {
-			empty,
-			{ navic.get_location, cond = navic.is_available },
-		},
+		lualine_c = {},
 		lualine_x = {},
 		lualine_y = {
 			{
