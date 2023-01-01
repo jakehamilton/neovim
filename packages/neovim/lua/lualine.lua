@@ -80,6 +80,7 @@ require("lualine").setup {
 	extensions = { "quickfix", "nvim-tree", "toggleterm", "fzf" },
 	options = {
 		theme = theme,
+		icons_enabled = true,
 		component_separators = "",
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
@@ -151,6 +152,12 @@ require("lualine").setup {
 
 				separator = { left = "", right = "" },
 			},
+			{
+				"filetype",
+				colored = true,
+				icon_only = true,
+				separator = { left = "", right = "" },
+			},
 			empty
 		},
 		lualine_z = {},
@@ -171,7 +178,7 @@ require("lualine").setup {
 		lualine_x = {},
 		lualine_y = {
 			{
-				'filename',
+				"filename",
 				file_status = true,
 				path = 1, -- Show relative path.
 				shorting_target = 25, -- Leave 25 characters for other things in the status line.
@@ -183,6 +190,12 @@ require("lualine").setup {
 					newfile = '[New]',
 				},
 
+				separator = { left = "", right = "" },
+			},
+			{
+				"filetype",
+				colored = true,
+				icon_only = true,
 				separator = { left = "", right = "" },
 			},
 			empty
