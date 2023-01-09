@@ -84,4 +84,12 @@ let
 
   wrapped-neovim = wrapNeovimUnstable neovim-unwrapped neovim-config-with-wrapper-args;
 in
-wrapped-neovim
+wrapped-neovim.overrideAttrs (oldAttrs: {
+  meta = with lib; {
+    description = "Neovim Plus Ultra";
+    maintainers = with maintainers; [ jakehamilton ];
+    platforms = with platforms;
+      linux
+      ++ darwin;
+  };
+})

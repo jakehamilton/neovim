@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     snowfall-lib = {
-      url = "github:snowfallorg/lib";
+      url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -18,8 +18,6 @@
 
       overlay-package-namespace = "plusultra";
 
-      outputs-builder = channels: {
-        packages.default = "neovim";
-      };
+      alias.packages.default = "neovim";
     };
 }
