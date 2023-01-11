@@ -59,6 +59,16 @@ let
       sha256 = "0s65xsrqkjdy4zmqxh2gn17kh1d2b7w2jvwa6hrrw1nag4h6cids";
     };
   };
+  vim-astro = vimUtils.buildVimPluginFrom2Nix {
+    pname = "vim-astro";
+    version = "unstable-2022-01-11";
+    src = fetchFromGitHub {
+      owner = "wuelnerdotexe";
+      repo = "vim-astro";
+      rev = "34732be5e9a5c28c2409f4490edf92d46d8b55a9";
+      sha256 = "1ild33hxiphj0z8b4kpcad4rai7q7jd0lsmhpa30kfgmyj5kh90z";
+    };
+  };
 in
 with vimPlugins; [
   # Icons
@@ -155,6 +165,9 @@ with vimPlugins; [
 
   # Dotbox
   dotbox-nvim
+
+  # Astro
+  vim-astro
 
   # Tmux
   vim-tmux-navigator

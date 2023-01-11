@@ -88,6 +88,7 @@ wrapped-neovim.overrideAttrs (oldAttrs: {
   meta = with lib; {
     description = "Neovim Plus Ultra";
     maintainers = with maintainers; [ jakehamilton ];
+    mainProgram = "nvim";
     platforms = with platforms;
       linux
       ++ darwin;

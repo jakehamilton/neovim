@@ -16,9 +16,10 @@ let
     '';
   };
   tailwindcss-language-server = node-packages."@tailwindcss/language-server";
+  astrojs-language-server = node-packages."@astrojs/language-server";
 in
 {
   nodePackages = prev.nodePackages // {
-    inherit prisma-language-server tailwindcss-language-server;
+    inherit prisma-language-server tailwindcss-language-server astrojs-language-server;
   };
 }

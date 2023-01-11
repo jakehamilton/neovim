@@ -195,6 +195,19 @@ lsp.sumneko_lua.setup {
 	},
 }
 
+-- Astro
+vim.g.astro_typescript = "enable"
+
+lsp.astro.setup {
+	on_attach = on_attach,
+	cmd = { "@astroLanguageServer@", "--stdio" },
+	init_options = {
+		typescript = {
+			serverPath = "@typescript@",
+		},
+	},
+}
+
 -- Prettier
 local function is_null_ls_formatting_enabed(bufnr)
 	local file_type = vim.api.nvim_buf_get_option(bufnr, "filetype")

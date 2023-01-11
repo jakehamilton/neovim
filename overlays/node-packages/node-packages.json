@@ -1,1 +1,1 @@
-["@prisma/language-server", "@tailwindcss/language-server"]
+["@prisma/language-server", "@tailwindcss/language-server", "@astrojs/language-server"]

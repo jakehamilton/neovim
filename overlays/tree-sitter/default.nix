@@ -25,6 +25,20 @@ final: prev: {
         deepClone = false;
         leaveDotGit = false;
       };
+      # @TODO(jakehamilton): There doesn't seem to be a Neovim plugin for
+      # Astro yet. Could probably make one...
+      #
+      # tree-sitter-astro = {
+      #   url = "https://github.com/virchau13/tree-sitter-astro";
+      #   rev = "a1f66bf72ed68b87f779bce9a52e5c6521fc867e";
+      #   date = "2022-12-29T16:41:35+08:00";
+      #   path = "/nix/store/9m6x5g0nwdhgw9abh8kj7m14vgh13j4y-tree-sitter-astro";
+      #   sha256 = "155khx6zvhlilpzkd3pxlqki7bgjfx475mf33zran7h000jwxsa3";
+      #   fetchLFS = false;
+      #   fetchSubmodules = false;
+      #   deepClone = false;
+      #   leaveDotGit = false;
+      # };
     };
   };
 }
