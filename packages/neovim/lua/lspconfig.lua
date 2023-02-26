@@ -160,7 +160,7 @@ lsp.prismals.setup {
 	capabilities = capabilities,
 	settings = {
 		prisma = {
-			prismaFmtBinPath = "@prismaFormat@";
+			prismaFmtBinPath = "@prismaFormat@",
 		}
 	},
 }
@@ -173,7 +173,7 @@ lsp.tailwindcss.setup {
 }
 
 -- Lua
-lsp.sumneko_lua.setup {
+lsp.lua_ls.setup {
 	on_attach = on_attach,
 	cmd = { "lua-language-server" },
 	capabilities = capabilities,

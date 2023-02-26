@@ -51,7 +51,8 @@ You can install this package by adding it as an input to your Nix flake.
 	description = "My system flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+		unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
 		# Snowfall is not required, but will make configuration easier for you.
 		snowfall-lib = {
@@ -61,8 +62,9 @@ You can install this package by adding it as an input to your Nix flake.
 
 		neovim = {
 			url = "github:jakehamilton/neovim";
-			# This flake currently requires changes that are only on the Unstable channel. 
+			# This flake currently requires changes that are only on the Unstable channel.
 			inputs.nixpkgs.follows = "nixpkgs";
+			inputs.unstable.follows = "unstable";
 		};
 	};
 

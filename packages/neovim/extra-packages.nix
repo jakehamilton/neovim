@@ -9,7 +9,7 @@ with pkgs; [
   gopls
   rnix-lsp
   rust-analyzer
-  sumneko-lua-language-server
+  lua-language-server
 
   # Language Server Dependencies
   nodePackages.pyright
