@@ -31,4 +31,7 @@ with pkgs; [
 
   # Node
   nodejs-16_x
+
+  # Misc
+  fortune
 ]
