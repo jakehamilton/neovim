@@ -5,7 +5,7 @@ let
   node-packages = import ./create-node-packages.nix {
     inherit (prev) system;
     pkgs = prev;
-    nodejs = prev.nodejs-16_x;
+    nodejs = prev.nodejs-18_x;
   };
   prisma-language-server = node-packages."@prisma/language-server".override {
     dontNpmInstall = true;

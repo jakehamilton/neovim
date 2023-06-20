@@ -38,24 +38,24 @@ let
       )
       files;
 
-  eslintModules = symlinkJoin {
-    name = "neovim-eslint-modules";
-    paths = with nodePackages; [ eslint ];
-  };
+  # eslintModules = symlinkJoin {
+  #   name = "neovim-eslint-modules";
+  #   paths = with nodePackages; [ eslint ];
+  # };
 
   # The ESLint Language Server isn't able to find the eslint library by default, so we have
   # to wrap the executable to set a custom NPM prefix. This will make sure that when it tries
   # to load the package from the global location it is actually directed to ${eslintModules} in
   # the Nix Store.
-  wrappedESLintLanguageServer = runCommand "neovim-wrapped-eslint-language-server"
-    {
-      src = nodePackages.vscode-langservers-extracted;
-      buildInputs = [ makeWrapper ];
-    }
-    ''
-      makeWrapper $src/bin/vscode-eslint-language-server $out/bin/vscode-eslint-language-server \
-        --set NPM_CONFIG_PREFIX ${eslintModules}
-    '';
+  # wrappedESLintLanguageServer = runCommand "neovim-wrapped-eslint-language-server"
+  #   {
+  #     src = nodePackages.vscode-langservers-extracted;
+  #     buildInputs = [ makeWrapper ];
+  #   }
+  #   ''
+  #     makeWrapper $src/bin/vscode-eslint-language-server $out/bin/vscode-eslint-language-server \
+  #       --set NPM_CONFIG_PREFIX ${eslintModules}
+  #   '';
 in
 mkLuaConfigs [
   ./bufferline.lua
@@ -73,7 +73,7 @@ mkLuaConfigs [
     options = {
       typescript = "${nodePackages.typescript}/lib/node_modules/typescript";
       typescriptLanguageServer = "${nodePackages.typescript-language-server}/bin/typescript-language-server";
-      eslintLanguageServer = "${wrappedESLintLanguageServer}/bin/vscode-eslint-language-server";
+      # eslintLanguageServer = "${wrappedESLintLanguageServer}/bin/vscode-eslint-language-server";
       htmlLanguageServer = "${nodePackages.vscode-langservers-extracted}/bin/vscode-html-language-server";
       cssLanguageServer = "${nodePackages.vscode-langservers-extracted}/bin/vscode-css-language-server";
       jsonLanguageServer = "${nodePackages.vscode-langservers-extracted}/bin/vscode-json-language-server";

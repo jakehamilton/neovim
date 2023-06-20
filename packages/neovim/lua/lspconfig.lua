@@ -96,7 +96,8 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Configure servers with common settings.
 local servers = {
 	'rnix',
-	'sqls',
+	-- @TODO(jakehamilton): Replace this with sqlls when a package exists in NixPkgs.
+	-- 'sqls',
 	'gopls',
 	'rust_analyzer',
 }
@@ -116,14 +117,14 @@ lsp.tsserver.setup {
 }
 
 -- ESLint
-lsp.eslint.setup {
-	on_attach = on_attach,
-	cmd = { "@eslintLanguageServer@", "--stdio" },
-	capabilities = capabilities,
-	settings = {
-		format = false,
-	},
-}
+-- lsp.eslint.setup {
+-- 	on_attach = on_attach,
+-- 	cmd = { "@eslintLanguageServer@", "--stdio" },
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		format = false,
+-- 	},
+-- }
 
 -- JSON
 lsp.jsonls.setup {
