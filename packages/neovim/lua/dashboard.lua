@@ -53,6 +53,7 @@ dashboard.setup {
 		},
 		project = {
 			enable = true,
+			icon = " ",
 			label = "Projects",
 			limit = 8,
 			action = "e ",
