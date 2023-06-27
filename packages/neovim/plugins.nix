@@ -90,6 +90,7 @@ with vimPlugins; [
   (nvim-treesitter.withPlugins
     (plugins: tree-sitter.allGrammars))
   tree-sitter-playground
+  nvim-treesitter-context
 
   # Utility
   plenary-nvim
@@ -188,4 +189,11 @@ with vimPlugins; [
 
   # Prisma
   vim-prisma
+
+  # Bookmarks
+  vim-bookmarks
+  telescope-vim-bookmarks-nvim
+
+  # Line Indentation
+  indent-blankline-nvim
 ]

@@ -132,61 +132,49 @@ require("bufferline").setup {
 	highlights = {
 		fill = fill,
 		background = tab_visible,
-
 		separator = separator_visible,
 		separator_visible = separator_visible,
 		separator_selected = separator_selected,
-
 		tab = tab_visible,
 		tab_selected = tab_selected,
 		tab_separator = tab_separator,
 		tab_separator_selected = tab_separator_selected,
-
 		buffer = tab_visible,
 		buffer_visible = tab_visible,
 		buffer_selected = tab_selected,
-
 		numbers = numbers_visible,
 		numbers_visible = numbers_visible,
 		numbers_selected = numbers_selected,
-
 		duplicate = duplicate_visible,
 		duplicate_visible = duplicate_visible,
 		duplicate_selected = duplicate_selected,
-
 		diagnostic = diagnostic_visible,
 		diagnostic_visible = diagnostic_visible,
 		diagnostic_selected = diagnostic_selected,
-
 		modified = modified_visible,
 		modified_visible = modified_visible,
 		modified_selected = modified_selected,
-
 		pick = pick_visible,
 		pick_visible = pick_visible,
 		pick_selected = pick_selected,
-
 		error = error_visible,
 		error_visible = error_visible,
 		error_selected = error_selected,
 		error_diagnostic = error_visible,
 		error_diagnostic_visible = error_visible,
 		error_diagnostic_selected = error_selected,
-
 		warning = warning_visible,
 		warning_visible = warning_visible,
 		warning_selected = warning_selected,
 		warning_diagnostic = warning_visible,
 		warning_diagnostic_visible = warning_visible,
 		warning_diagnostic_selected = warning_selected,
-
 		info = info_visible,
 		info_visible = info_visible,
 		info_selected = info_selected,
 		info_diagnostic = info_visible,
 		info_diagnostic_visible = info_visible,
 		info_diagnostic_selected = info_selected,
-
 		hint = hint_visible,
 		hint_visible = hint_visible,
 		hint_selected = hint_selected,

@@ -14,6 +14,9 @@ vim.opt.relativenumber = true
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+-- Stop the sign column from flashing in/out with gitsigns.
+vim.opt.signcolumn = "yes"
+
 -- We're professionals here.
 vim.opt.mouse = ""
 

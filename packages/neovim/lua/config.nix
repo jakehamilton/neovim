@@ -96,6 +96,9 @@ mkLuaConfigs [
   ./trouble.lua
   ./twilight.lua
   ./vim.lua
+  ./bookmarks.lua
+  ./indent.lua
+  ./context.lua
   ./which-key.lua
   ./wrap-toggle.lua
 ]
