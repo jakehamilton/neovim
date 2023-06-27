@@ -18,7 +18,7 @@
 
       channels-config.allowUnfree = true;
 
-      overlay-package-namespace = "plusultra";
+      package-namespace = "plusultra";
 
       alias.packages.default = "neovim";
     };
