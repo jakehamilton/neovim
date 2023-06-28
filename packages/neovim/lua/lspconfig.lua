@@ -77,6 +77,21 @@ local on_attach = function(client, buffer)
 			r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		}
 	}, { buffer = buffer, mode = "n", prefix = "<leader>", noremap = true, silent = true })
+
+	if client.name == "tsserver" then
+		which_key.register({
+			c = {
+				name = "Code",
+				a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Action" },
+				f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+				r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+				i = {
+					name = "Imports",
+					o = { "<cmd>OrganizeImports<cr>", "Organize" },
+				},
+			}
+		}, { buffer = buffer, mode = "n", prefix = "<leader>", noremap = true, silent = true })
+	end
 end
 
 -- @TODO(jakehamilton): Add support for cssmodules. Requires
@@ -114,6 +129,18 @@ lsp.tsserver.setup {
 	on_attach = on_attach,
 	cmd = { "@typescriptLanguageServer@", "--stdio", "--tsserver-path", "@typescript@" },
 	capabilities = capabilities,
+	commands = {
+		OrganizeImports = {
+			function()
+				vim.lsp.buf.execute_command {
+					title = "",
+					command = "_typescript.organizeImports",
+					arguments = { vim.api.nvim_buf_get_name(0) },
+				}
+			end,
+			description = "Organize Imports",
+		},
+	},
 }
 
 -- ESLint
@@ -261,7 +288,6 @@ prettier.setup {
 	cli_options = {
 		-- Default to *only* config given in a project, unless none exists.
 		config_precedence = "prefer-file",
-
 		-- Prettier config if no project specific configuration is found.
 		use_tabs = true,
 		print_width = 120,
