@@ -75,10 +75,10 @@ You can install this package by adding it as an input to your Nix flake.
 
 			overlays = with inputs; [
 				# Use the overlay provided by this flake.
-				neovim.overlay
+				neovim.overlays.default
 
 				# There is also a named overlay, though the output is the same.
-				neovim.overlays."nixpkgs/plusultra"
+				neovim.overlays."package/neovim"
 			];
 		};
 }
