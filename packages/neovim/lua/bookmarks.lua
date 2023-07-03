@@ -5,7 +5,7 @@ telescope.load_extension("vim_bookmarks")
 
 which_key.register({
 	B = {
-		name = "Find",
+		name = "Bookmarks",
 		a = { "<cmd>BookmarkAnnotate<CR>", "Annotate" },
 		F = { "<cmd>Telescope vim_bookmarks all<CR>", "Find (All)" },
 		f = { "<cmd>Telescope vim_bookmarks current_file<CR>", "Find (Current File)" },
