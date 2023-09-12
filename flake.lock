@@ -191,14 +191,18 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1694491848,
-        "narHash": "sha256-3OEJu2t6ABxUgu1nBnO0O4a02s1PXL0LPCIKdpNkkfw=",
-        "path": "/Users/short/work/@jakehamilton/nixvim",
-        "type": "path"
+        "lastModified": 1694498606,
+        "narHash": "sha256-k+OEt0ygahRHYxSBpDIdSoH15ydI97tNiha8LMNhgGE=",
+        "owner": "jakehamilton",
+        "repo": "nixvim",
+        "rev": "439e9954eae3fcad4cc986d094d9d1e730b61111",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/short/work/@jakehamilton/nixvim",
-        "type": "path"
+        "owner": "jakehamilton",
+        "ref": "dev",
+        "repo": "nixvim",
+        "type": "github"
       }
     },
     "poetry2nix": {
