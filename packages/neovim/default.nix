@@ -47,7 +47,7 @@
     meta =
       attrs.meta
       // {
-        # @NOTE(jakehamilton): The default platforms specified aren't actually all
+        # NOTE: The default platforms specified aren't actually all
         # supported by nixvim. Instead, only support the ones that can build with
         # the module system.
         platforms = builtins.attrNames inputs.nixvim.legacyPackages;
