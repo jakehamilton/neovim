@@ -6,7 +6,7 @@
   neovim-config ? {},
   ...
 }: let
-  raw-modules = lib.snowfall.fs.get-default-nix-files-recursive ./modules;
+  raw-modules = lib.snowfall.fs.get-default-nix-files-recursive (lib.snowfall.fs.get-file "/modules/nixvim");
 
   wrapped-modules =
     builtins.map
