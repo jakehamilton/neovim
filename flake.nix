@@ -2,7 +2,13 @@
   description = "Jake Hamilton's Neovim configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nixvim = {
+      # url = "github:nix-community/nixvim";
+      url = "path:/Users/short/work/@jakehamilton/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     snowfall-lib = {
       url = "github:snowfallorg/lib/dev";
@@ -16,10 +22,16 @@
 
       src = ./.;
 
+      snowfall = {
+        namespace = "plusultra";
+      };
+
       channels-config.allowUnfree = true;
 
-      package-namespace = "plusultra";
-
       alias.packages.default = "neovim";
+
+      outputs-builder = channels: {
+        formatter = channels.nixpkgs.alejandra;
+      };
     };
 }

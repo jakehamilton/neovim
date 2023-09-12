@@ -1,0 +1,7 @@
+{...}: {
+  plugins = {
+    illuminate = {
+      enable = true;
+    };
+  };
+}

@@ -19,9 +19,8 @@
 
 ## Screenshots
 
-![Standard](https://user-images.githubusercontent.com/7005773/189502030-d8f190d1-1ff9-4244-ba25-c47ffcde887f.png)
-![Diagnostics](https://user-images.githubusercontent.com/7005773/189502035-9d09ca7c-82da-4537-8bab-d08d460b439c.png)
-![Dashboard](https://user-images.githubusercontent.com/7005773/189502036-64e939c8-1f53-40dc-a781-8cf37ec3d57d.png)
+![Busy](https://github.com/jakehamilton/neovim/assets/7005773/cc318a24-51aa-4412-9cfa-610ab9cc8991)
+![Dashboard](https://github.com/jakehamilton/neovim/assets/7005773/27c3a3c4-acf0-4a89-be1e-4f642144348a)
 
 ## Try Without Installing
 

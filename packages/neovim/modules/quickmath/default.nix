@@ -1,0 +1,7 @@
+{...}: {
+  plugins = {
+    quickmath = {
+      enable = true;
+    };
+  };
+}

@@ -1,5 +1,0 @@
-{ lib, ... }:
-
-python-packages:
-
-[ ]

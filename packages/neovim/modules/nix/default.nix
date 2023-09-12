@@ -1,0 +1,7 @@
+{...}: {
+  plugins = {
+    nix = {
+      enable = true;
+    };
+  };
+}

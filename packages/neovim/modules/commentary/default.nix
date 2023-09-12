@@ -1,0 +1,7 @@
+{...}: {
+  plugins = {
+    commentary = {
+      enable = true;
+    };
+  };
+}

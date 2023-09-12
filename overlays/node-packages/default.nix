@@ -1,7 +1,4 @@
-{ channels, ... }:
-
-final: prev:
-let
+{channels, ...}: final: prev: let
   node-packages = import ./create-node-packages.nix {
     inherit (prev) system;
     pkgs = prev;
@@ -17,9 +14,10 @@ let
   };
   tailwindcss-language-server = node-packages."@tailwindcss/language-server";
   astrojs-language-server = node-packages."@astrojs/language-server";
-in
-{
-  nodePackages = prev.nodePackages // {
-    inherit prisma-language-server tailwindcss-language-server astrojs-language-server;
-  };
+in {
+  nodePackages =
+    prev.nodePackages
+    // {
+      inherit prisma-language-server tailwindcss-language-server astrojs-language-server;
+    };
 }
