@@ -14,6 +14,11 @@
       url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:
@@ -32,6 +37,13 @@
 
       outputs-builder = channels: {
         formatter = channels.nixpkgs.alejandra;
+
+        checks = inputs.pre-commit-hooks.lib.${channels.nixpkgs.system}.run {
+          src = ./.;
+          hooks = {
+            alejandra.enable = true;
+          };
+        };
       };
     };
 }
