@@ -1,11 +1,30 @@
 {lib, ...}:
+with lib.plusultra;
 with lib.plusultra.theme.nord; {
   highlight = {
+    NormalFloat = {
+      fg = nord6;
+      bg = nord0;
+    };
+    FloatBorder = {
+      fg = nord6;
+      bg = nord0;
+    };
+
     NoiceCmdlinePopupBorderSearch = {
       fg = nord10;
     };
     NoiceCmdlineIconSearch = {
       fg = nord10;
+    };
+
+    NoicePopupMenu = {
+      fg = nord6;
+      bg = nord0;
+    };
+    NoicePopupMenuBorder = {
+      fg = nord6;
+      bg = nord0;
     };
   };
 
@@ -65,6 +84,26 @@ with lib.plusultra.theme.nord; {
           input = {};
         };
       };
+
+      routes = [
+        {
+          filter = {find = "No information available";};
+          opts = {stop = true;};
+        }
+        {
+          filter = {
+            event = "lsp";
+            kind = "progress";
+            cond = lua.mkRaw ''
+              function(message)
+                local client = vim.tbl_get(message.opts, "progress", "client")
+                return client == "lua_ls" -- skip lua-ls progress
+              end
+            '';
+          };
+          opts = {skip = true;};
+        }
+      ];
     };
   };
 }
