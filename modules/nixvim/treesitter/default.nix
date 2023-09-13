@@ -1,12 +1,27 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}:
+with lib.plusultra; {
+  extraConfigLua = ''
+    require("which-key").register({
+      g = {
+        name = "Go",
+        H = {
+          "<cmd>TSHighlightCapturesUnderCursor<cr>", "Show Tree-sitter Captures"
+        },
+      },
+      t = {
+        name = "Toggle",
+        p = { "<cmd>TSPlaygroundToggle<cr>", "Toggle Tree-sitter Playground" }
+      }
+    }, { mode = "n", noremap = true, silent = true })
+  '';
+
   plugins = {
     treesitter = {
       enable = true;
-
-      # NOTE: This is currently broken due to how nvim-treesitter handles grammars differently
-      # than the tree-sitter package.
-      # https://github.com/NixOS/nixpkgs/blob/4c8cf44c5b9481a4f093f1df3b8b7ba997a7c760/pkgs/applications/editors/vim/plugins/nvim-treesitter/overrides.nix#L6
-      # grammarPackages = pkgs.tree-sitter.passthru.allGrammars;
     };
   };
 }

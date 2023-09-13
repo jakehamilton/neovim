@@ -44,9 +44,10 @@ with lib.plusultra; {
         c = true;
         cpp = true;
         nix = true;
+        lua = true;
 
-        yaml = false;
-        markdown = false;
+        yaml = true;
+        markdown = true;
         help = false;
         gitcommit = false;
         gitrebase = false;

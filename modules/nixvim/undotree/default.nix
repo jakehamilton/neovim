@@ -1,4 +1,11 @@
-{...}: {
+{lib, ...}:
+with lib.plusultra; {
+  maps = {
+    normal = vim.mkSilentKeyBinds [
+      ["<leader>tu" "<cmd>UndotreeToggle<cr>" "Toggle undotree"]
+    ];
+  };
+
   plugins = {
     undotree = {
       enable = true;
@@ -8,6 +15,7 @@
       focusOnToggle = true;
       treeNodeShape = "";
       autoOpenDiff = false;
+      windowWidth = 50;
     };
   };
 
