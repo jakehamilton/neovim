@@ -6,7 +6,7 @@
 with lib.plusultra;
 with lib.plusultra.theme.nord; {
   extraPlugins = [
-    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    (pkgs.vimUtils.buildVimPlugin {
       pname = "dbsession.nvim";
       version = "unstable-2023-05-31";
       src = pkgs.fetchFromGitHub {

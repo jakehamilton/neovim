@@ -5,7 +5,7 @@
 }:
 with lib.plusultra; {
   extraPlugins = [
-    (pkgs.vimUtils.buildVimPluginFrom2Nix {
+    (pkgs.vimUtils.buildVimPlugin {
       pname = "tree-sitter-playground";
       version = "unstable-2022-11-26";
       src = pkgs.fetchFromGitHub {

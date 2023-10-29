@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   extraPlugins = [
-    (pkgs.vimUtils.buildVimPluginFrom2Nix
+    (pkgs.vimUtils.buildVimPlugin
       {
         pname = "dotbox.nvim";
         version = "unstable-2022-11-26";
