@@ -19,14 +19,44 @@ in {
     BufKillCreateMappings = 0;
   };
 
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["gb" "<cmd>:BufferLinePick<cr>" "Go to buffer"]
-      ["<leader>bd" "<cmd>:BD<cr>" "Delete buffer"]
-      ["<leader>bn" "<cmd>:bnext<cr>" "Next buffer"]
-      ["<leader>bp" "<cmd>:bprevious<cr>" "Previous buffer"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "gb";
+      action = "<cmd>:BufferLinePick<cr>";
+      options = {
+        silent = true;
+        desc = "Go to buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>bd";
+      action = "<cmd>:BD<cr>";
+      options = {
+        silent = true;
+        desc = "Delete buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>bn";
+      action = "<cmd>:bnext<cr>";
+      options = {
+        silent = true;
+        desc = "Next buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>bp";
+      action = "<cmd>:bprevious<cr>";
+      options = {
+        silent = true;
+        desc = "Previous buffer";
+      };
+    }
+  ];
 
   plugins = {
     bufferline = {

@@ -1,10 +1,16 @@
 {lib, ...}:
 with lib.plusultra; {
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["<leader>tp" ":MarkdownPreviewToggle<cr>" "Toggle markdown preview"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>tp";
+      action = ":MarkdownPreviewToggle<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle markdown preview";
+      };
+    }
+  ];
 
   plugins = {
     markdown-preview = {

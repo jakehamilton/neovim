@@ -31,12 +31,26 @@ with lib.plusultra.theme.nord; {
     };
   };
 
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["<leader>ss" "<cmd>SessionSave<cr>" "Save session"]
-      ["<leader>sl" "<cmd>SessionLoad<cr>" "Load session"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>ss";
+      action = "<cmd>SessionSave<cr>";
+      options = {
+        silent = true;
+        desc = "Save session";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>sl";
+      action = "<cmd>SessionLoad<cr>";
+      options = {
+        silent = true;
+        desc = "Load session";
+      };
+    }
+  ];
 
   plugins = {
     dashboard = {

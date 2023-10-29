@@ -1,11 +1,25 @@
 {lib, ...}:
 with lib.plusultra; {
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["<leader>oc" "<cmd>:Copilot panel<cr>" "Open Copilot"]
-      ["<leader>tc" "<cmd>:lua require('copilot.suggestion').toggle_auto_trigger()<cr>" "Toggle Copilot"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>oc";
+      action = "<cmd>:Copilot panel<cr>";
+      options = {
+        silent = true;
+        desc = "Open Copilot";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>tc";
+      action = "<cmd>:lua require('copilot.suggestion').toggle_auto_trigger()<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle Copilot";
+      };
+    }
+  ];
 
   plugins = {
     copilot-lua = {

@@ -17,10 +17,24 @@ with lib.plusultra; {
     })
   ];
 
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["gH" "<cmd>TSHighlightCapturesUnderCursor<cr>" "Show tree-sitter captures"]
-      ["<leader>tP" "<cmd>TSPlaygroundToggle<cr>" "Toggle tree-sitter playground"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "gH";
+      action = "<cmd>TSHighlightCapturesUnderCursor<cr>";
+      options = {
+        silent = true;
+        desc = "Show tree-sitter captures";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>tP";
+      action = "<cmd>TSPlaygroundToggle<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle tree-sitter playground";
+      };
+    }
+  ];
 }

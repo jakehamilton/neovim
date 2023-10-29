@@ -1,10 +1,16 @@
 {lib, ...}:
 with lib.plusultra; {
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["<leader>tt" "<cmd>:TroubleToggle<cr>" "Toggle trouble"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>tt";
+      action = "<cmd>:TroubleToggle<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle trouble";
+      };
+    }
+  ];
 
   plugins = {
     trouble = {

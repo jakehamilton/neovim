@@ -3,27 +3,44 @@
     tmux_navigator_no_mappings = 1;
   };
 
-  maps = {
-    normal = {
-      # tmux-navigator
-      "<m-h>" = {
+  keymaps = [
+    {
+      mode = "n";
+      key = "<m-h>";
+      action = "<cmd>TmuxNavigateLeft<cr>";
+      options = {
         silent = true;
-        action = "<cmd>TmuxNavigateLeft<cr>";
+        desc = "Navigate left";
       };
-      "<m-j>" = {
+    }
+    {
+      mode = "n";
+      key = "<m-j>";
+      action = "<cmd>TmuxNavigateDown<cr>";
+      options = {
         silent = true;
-        action = "<cmd>TmuxNavigateDown<cr>";
+        desc = "Navigate down";
       };
-      "<m-k>" = {
+    }
+    {
+      mode = "n";
+      key = "<m-k>";
+      action = "<cmd>TmuxNavigateUp<cr>";
+      options = {
         silent = true;
-        action = "<cmd>TmuxNavigateUp<cr>";
+        desc = "Navigate up";
       };
-      "<m-l>" = {
+    }
+    {
+      mode = "n";
+      key = "<m-l>";
+      action = "<cmd>TmuxNavigateRight<cr>";
+      options = {
         silent = true;
-        action = "<cmd>TmuxNavigateRight<cr>";
+        desc = "Navigate right";
       };
-    };
-  };
+    }
+  ];
 
   plugins = {
     tmux-navigator = {

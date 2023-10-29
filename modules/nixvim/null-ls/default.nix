@@ -4,7 +4,8 @@
   ...
 }: {
   plugins = {
-    null-ls = {
+    # null-ls has been forked to none-ls after the original author archived the project.
+    none-ls = {
       enable = true;
 
       onAttach = ''

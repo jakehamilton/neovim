@@ -7,14 +7,21 @@
 
     plugins = {
       indent-blankline = {
+        # Removed
+        # showEndOfLine = true;
+        # useTreesitter = true;
+        # spaceCharBlankline = " ";
+
         enable = true;
-        showCurrentContext = true;
-        showCurrentContextStart = true;
-        showEndOfLine = true;
-        spaceCharBlankline = " ";
-        buftypeExclude = ["terminal" "nofile"];
-        filetypeExclude = ["help" "dashboard" "NvimTree" "Trouble"];
-        useTreesitter = true;
+
+        scope = {
+          enabled = true;
+          showStart = true;
+        };
+        exclude = {
+          buftypes = ["terminal" "nofile"];
+          filetypes = ["help" "dashboard" "NvimTree" "Trouble"];
+        };
       };
     };
   };

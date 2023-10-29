@@ -1,11 +1,25 @@
 {lib, ...}:
 with lib.plusultra; {
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["<C-n>" "<cmd>:NvimTreeToggle<cr>" "Toggle Tree"]
-      ["<leader>gf" "<cmd>:NvimTreeFindFile<cr>" "CurrentFile"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<C-n>";
+      action = "<cmd>:NvimTreeToggle<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle Tree";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>gf";
+      action = "<cmd>:NvimTreeFindFile<cr>";
+      options = {
+        silent = true;
+        desc = "CurrentFile";
+      };
+    }
+  ];
 
   plugins = {
     nvim-tree = {

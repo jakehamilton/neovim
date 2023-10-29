@@ -1,10 +1,16 @@
 {lib, ...}:
 with lib.plusultra; {
-  maps = {
-    normal = vim.mkSilentKeyBinds [
-      ["<leader>tu" "<cmd>UndotreeToggle<cr>" "Toggle undotree"]
-    ];
-  };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>tu";
+      action = "<cmd>UndotreeToggle<cr>";
+      options = {
+        silent = true;
+        desc = "Toggle undotree";
+      };
+    }
+  ];
 
   plugins = {
     undotree = {
