@@ -86,10 +86,13 @@ with lib.plusultra.theme.nord; {
       };
 
       routes = [
+        # Hide no info
         {
           filter = {find = "No information available";};
           opts = {stop = true;};
         }
+
+        # Hide unhelpful LSP info
         {
           filter = {
             event = "lsp";
@@ -97,9 +100,24 @@ with lib.plusultra.theme.nord; {
             cond = lua.mkRaw ''
               function(message)
                 local client = vim.tbl_get(message.opts, "progress", "client")
-                return client == "lua_ls" -- skip lua-ls progress
+                return client == "lua_ls" or client == "null-ls" -- skip lua-ls and null-ls progress
               end
             '';
+          };
+          opts = {skip = true;};
+        }
+
+        # Hide unnecessary messages
+        {
+          filter = {
+            event = "msg_show";
+            any = [
+              {find = "%d+L, %d+B";}
+              {find = "; after #%d+";}
+              {find = "; before #%d+";}
+              {find = "%d fewer lines";}
+              {find = "%d more lines";}
+            ];
           };
           opts = {skip = true;};
         }

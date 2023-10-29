@@ -27,7 +27,7 @@ with lib.plusultra; {
       disableNetrw = true;
       hijackCursor = true;
 
-      selectPrompts = true;
+      selectPrompts = false;
 
       onAttach = lua.mkRaw ''
         function(bufnr)
