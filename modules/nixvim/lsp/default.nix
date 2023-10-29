@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}:
+with lib.plusultra; {
   plugins = {
     lsp = {
       enable = true;
@@ -83,7 +88,26 @@
         pyright.enable = true;
         rust-analyzer.enable = true;
         tailwindcss.enable = true;
-        tsserver.enable = true;
+        tsserver = {
+          enable = true;
+
+          extraOptions = {
+            commands = {
+              OrganizeImports = lua.mkRaw ''
+                {
+                  function()
+                    vim.lsp.buf.execute_command {
+                      title = "",
+                      command = "_typescript.organizeImports",
+                      arguments = { vim.api.nvim_buf_get_name(0) },
+                    }
+                  end,
+                  description = "Organize Imports",
+                }
+              '';
+            };
+          };
+        };
         yamlls.enable = true;
 
         nixd = {
@@ -98,18 +122,20 @@
   };
 
   extraConfigLuaPre = ''
-    local diagnostic_signs = { Error = "", Warn = "", Hint = "", Info = "" }
+    do
+      local diagnostic_signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
-    for type, icon in pairs(diagnostic_signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      for type, icon in pairs(diagnostic_signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        underline = true,
+        update_in_insert = false,
+        virtual_text = { spacing = 4, prefix = "●" },
+        severity_sort = true,
+      })
     end
-
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = true,
-      update_in_insert = false,
-      virtual_text = { spacing = 4, prefix = "●" },
-      severity_sort = true,
-    })
   '';
 }
