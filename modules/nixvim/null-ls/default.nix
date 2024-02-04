@@ -7,14 +7,12 @@
     # null-ls has been forked to none-ls after the original author archived the project.
     none-ls = {
       enable = true;
+      enableLspFormat = true;
 
-      onAttach = ''
-        function(client, bufnr)
-          require("lsp-format").on_attach(client)
-        end
-      '';
-
-      sources.formatting.prettier.enable = true;
+      sources.formatting.prettier = {
+        enable = true;
+        disableTsServerFormatter = true;
+      };
     };
 
     lsp = {
@@ -22,11 +20,6 @@
         eslint = {
           capabilities = {
             # documentFormattingProvider = false;
-          };
-        };
-        tsserver = {
-          capabilities = {
-            documentFormattingProvider = false;
           };
         };
       };
