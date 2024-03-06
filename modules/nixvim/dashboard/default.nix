@@ -70,7 +70,10 @@ with lib.plusultra.theme.nord; {
       };
 
       project = {
-        enable = true;
+        # There is currently a bug where loading projects on launch will throw an error,
+        # breaking the first buffer used. Disabling this removes quick project access, but
+        # avoids the issue.
+        enable = false;
         icon = "󰉋 ";
         label = "Projects";
         limit = 8;
