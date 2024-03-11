@@ -7,8 +7,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "juicelang";
           repo = "juice.nvim";
-          rev = "24b38843e48557cc8f29bca7c4e7f27b2b2bc396";
-          sha256 = "1zf87y2mg6ahqa4vpdqavjd12ccc2f1lyv5iq7iq7xwinmj8d59m";
+          rev = "9cb74f6dfca9b4af942a6675013f67f1af5ead5f";
+          sha256 = "1wnid6bcayy2s2hc9jzrlq2dznfypzgkr948zpvijpdbmfbsp33y";
         };
       })
   ];

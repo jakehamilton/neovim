@@ -10,8 +10,8 @@
   };
   tree-sitter-juice = {
     url = "https://github.com/juicelang/tree-sitter-juice";
-    rev = "617a7bef05fffb6574af330a9931e1fb3910dc0b";
-    sha256 = "060k06k8x0lajhz31m5rh4ls0xvr4p3bim71czxbi7daimziz53i";
+    rev = "05020c4f99734903550de18870ce1208531aa81a";
+    sha256 = "1q8cql5q9zg27kn30k6yqimv1ya3xzsi7vzcdk2rbabfdqbyhvis";
     fetchLFS = false;
     fetchSubmodules = false;
     deepClone = false;
