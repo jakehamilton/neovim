@@ -1,7 +1,0 @@
-{...}: {
-  plugins = {
-    surround = {
-      enable = true;
-    };
-  };
-}

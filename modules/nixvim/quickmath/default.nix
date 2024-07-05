@@ -1,7 +1,0 @@
-{...}: {
-  plugins = {
-    quickmath = {
-      enable = true;
-    };
-  };
-}

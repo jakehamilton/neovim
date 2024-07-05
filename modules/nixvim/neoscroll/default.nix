@@ -1,7 +1,0 @@
-{...}: {
-  plugins = {
-    neoscroll = {
-      enable = true;
-    };
-  };
-}
