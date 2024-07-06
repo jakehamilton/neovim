@@ -1,0 +1,1 @@
+{ plugins.quickmath.enable = true; }

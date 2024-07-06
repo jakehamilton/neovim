@@ -1,0 +1,1 @@
+{ plugins.comment.enable = true; }

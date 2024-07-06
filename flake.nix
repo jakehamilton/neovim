@@ -20,7 +20,12 @@
     };
   };
 
-  outputs = inputs:
+  # TODO: a todo
+  # NOTE: a note
+  # WARN: a warning
+  # HACK: a hack
+  outputs =
+    inputs:
     inputs.snowfall-lib.mkFlake {
       inherit inputs;
 
@@ -34,17 +39,19 @@
 
       alias.packages.default = "neovim";
 
-      overlays = with inputs; [
-        nixvim.overlays.default
-      ];
+      overlays = with inputs; [ nixvim.overlays.default ];
 
       outputs-builder = channels: {
-        formatter = channels.nixpkgs.alejandra;
+        formatter = channels.nixpkgs.nixfmt-rfc-style;
 
         checks.pre-commit-check = inputs.pre-commit-hooks.lib.${channels.nixpkgs.system}.run {
           src = ./.;
           hooks = {
-            alejandra.enable = true;
+            nixfmt = {
+              enable = true;
+              entry = "${channels.nixpkgs.nixfmt-rfc-style}/bin/nixfmt";
+              extraPackages = [ channels.nixpkgs.nixfmt-rfc-style ];
+            };
           };
         };
       };

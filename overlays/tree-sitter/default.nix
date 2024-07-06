@@ -1,4 +1,6 @@
-{channels, ...}: final: prev: let
+{ channels, ... }:
+final: prev:
+let
   tree-sitter-dotbox = {
     url = "https://github.com/jakehamilton/tree-sitter-dotbox";
     rev = "234f92d21f2a7b987477a763e117c58af47e429f";
@@ -17,21 +19,20 @@
     deepClone = false;
     leaveDotGit = false;
   };
-in {
-  tree-sitter-grammars =
-    prev.tree-sitter-grammars
-    // {
-      tree-sitter-dotbox = prev.tree-sitter.buildGrammar {
-        language = "dotbox";
-        src = prev.fetchgit tree-sitter-dotbox;
-        version = "unstable-2022-11-26";
-      };
-      tree-sitter-juice = prev.tree-sitter.buildGrammar {
-        language = "juice";
-        src = prev.fetchgit tree-sitter-juice;
-        version = "unstable-2024-03-11";
-      };
+in
+{
+  tree-sitter-grammars = prev.tree-sitter-grammars // {
+    tree-sitter-dotbox = prev.tree-sitter.buildGrammar {
+      language = "dotbox";
+      src = prev.fetchgit tree-sitter-dotbox;
+      version = "unstable-2022-11-26";
     };
+    tree-sitter-juice = prev.tree-sitter.buildGrammar {
+      language = "juice";
+      src = prev.fetchgit tree-sitter-juice;
+      version = "unstable-2024-03-11";
+    };
+  };
 
   tree-sitter = prev.tree-sitter.override {
     extraGrammars = {
