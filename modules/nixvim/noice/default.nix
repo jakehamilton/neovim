@@ -16,10 +16,6 @@
       popupmenu = {
         backend = "cmp";
       };
-      # cmdline_popupmenu = {
-      #   replace = true;
-      #   merge = false;
-      # };
     };
 
     notify = {
@@ -157,6 +153,7 @@
           kind = "emsg";
           any = [
             { find = "E486:"; }
+            { find = "e944"; }
           ];
         };
         opts = {
@@ -169,8 +166,8 @@
           event = "notify";
           any = [
             { find = "LSP client log is large"; }
-            { find = " was properly created";}
-            { find = " was properly removed";}
+            { find = " was properly created"; }
+            { find = " was properly removed"; }
           ];
         };
         opts = {
