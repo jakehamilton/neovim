@@ -112,7 +112,6 @@ in
       clangd.enable = true;
       cmake.enable = true;
       cssls.enable = true;
-      denols.enable = true;
       dockerls.enable = true;
       docker-compose-language-service.enable = true;
       eslint.enable = true;
