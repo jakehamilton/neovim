@@ -1,6 +1,8 @@
 { helpers, ... }:
 {
   plugins = {
+    luasnip.enable = true;
+
     cmp = {
       enable = true;
 
@@ -10,7 +12,7 @@
             mapping =
               helpers.mkRaw # lua
                 "cmp.mapping.preset.cmdline()";
-            sources = [ { name = "buffer"; } ];
+            sources = [{ name = "buffer"; }];
           };
         in
         {
@@ -20,7 +22,7 @@
             mapping =
               helpers.mkRaw # lua
                 "cmp.mapping.preset.cmdline()";
-            sources = [ { name = "cmdline"; } ];
+            sources = [{ name = "cmdline"; }];
           };
         };
 

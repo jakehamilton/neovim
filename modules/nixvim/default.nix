@@ -1,4 +1,4 @@
-{ pkgs, helpers, ... }:
+{ pkgs, ... }:
 {
   vimAlias = true;
   withNodeJs = true;
@@ -16,7 +16,7 @@
   };
 
   opts = {
-    smartindent = true;
+    # smartindent = true;
     breakindent = true;
     cursorline = true;
 
