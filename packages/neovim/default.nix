@@ -1,38 +1,42 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  neovim-settings ? { },
-  neovim-config ? { },
-  ...
+{ lib
+, pkgs
+, inputs
+, neovim-settings ? { }
+, neovim-config ? { }
+, ...
 }:
 let
   raw-modules = lib.snowfall.fs.get-default-nix-files-recursive (
     lib.snowfall.fs.get-file "/modules/nixvim"
   );
 
-  wrapped-modules = builtins.map (
-    raw-module:
-    args@{ ... }:
-    let
-      module = import raw-module;
-      result =
-        if builtins.isFunction module then
-          module (
-            args
-            // {
-              # NOTE: nixvim doesn't allow for these to be customized so we must work around the
-              # module system here...
-              inherit lib pkgs;
-            }
-          )
-        else
-          module;
-    in
-    result // { _file = raw-module; }
-  ) raw-modules;
+  wrapped-modules = builtins.map
+    (
+      raw-module:
+      args@{ ... }:
+      let
+        module = import raw-module;
+        result =
+          if builtins.isFunction module then
+            module
+              (
+                args
+                // {
+                  # NOTE: nixvim doesn't allow for these to be customized so we must work around the
+                  # module system here...
+                  inherit lib pkgs;
+                }
+              )
+          else
+            module;
+      in
+      result // { _file = raw-module; }
+    )
+    raw-modules;
 
   raw-neovim = pkgs.nixvim.makeNixvimWithModule {
+    inherit pkgs;
+
     module = {
       imports = wrapped-modules;
 
