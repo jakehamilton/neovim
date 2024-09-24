@@ -9,7 +9,13 @@ let
     '';
 in
 {
-  extraPackages = with pkgs; [ nixfmt-rfc-style ];
+  extraPackages = with pkgs; [
+    nixfmt-rfc-style
+  ];
+
+  extraPlugins = with pkgs.vimPlugins; [
+    actions-preview-nvim
+  ];
 
   extraConfigLuaPre = ''
     do
@@ -60,10 +66,10 @@ in
       lspBuf = {
         K = "hover";
         gh = "hover";
-        gD = "references";
-        # gd = "definition";
+        gr = "references";
+        gd = "definition";
         gi = "implementation";
-        gt = "type_definition";
+        gD = "type_definition";
       };
 
       extra = [
@@ -101,6 +107,19 @@ in
           key = "<leader>gd";
           options = {
             desc = "LSP: Definitions";
+            silent = true;
+          };
+        }
+        {
+          action =
+            helpers.mkRaw
+              # lua
+              ''
+                require('actions-preview').code_actions
+              '';
+          key = "<leader>ca";
+          options = {
+            desc = "LSP: Code Actions";
             silent = true;
           };
         }

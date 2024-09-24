@@ -9,8 +9,12 @@
         vim.api.nvim_set_hl(0,  "WinSeparator", {
           fg = colors.nord2_gui,
         })
+        vim.api.nvim_set_hl(0,  "LspInlayHint", {
+          fg = colors.nord3_gui,
+        })
       end
     '';
+
 
   colorschemes.nord = {
     enable = true;
