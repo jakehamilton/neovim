@@ -17,6 +17,20 @@ in
     actions-preview-nvim
   ];
 
+  extraConfigLua = ''
+		do
+			require("actions-preview").setup({
+				diff = {
+					ignore_whitespace = true,
+				},
+				highlight_command = {
+					require("actions-preview.highlight").diff_highlight()
+				},
+				backend = { "telescope" },
+			})
+		end
+	'';
+
   extraConfigLuaPre = ''
     do
       local diagnostic_signs = { Error = "", Warn = "", Hint = "", Info = "" }
