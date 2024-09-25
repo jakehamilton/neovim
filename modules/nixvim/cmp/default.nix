@@ -69,24 +69,10 @@
         };
 
         sources = [
-          {
-            name = "luasnip";
-            groupIndex = 1;
-            priority = 5;
-          }
-          {
-            name = "copilot";
-            groupIndex = 1;
-            priority = 4;
-          }
-          {
-            name = "nvim_lsp";
-            groupIndex = 1;
-            priority = 3;
-          }
-          { name = "omni"; }
           { name = "path"; }
-          { name = "cmdline"; }
+          { name = "copilot"; }
+          { name = "nvim_lsp"; }
+          { name = "luasnip"; }
           { name = "buffer"; }
           { name = "dictionary"; }
         ];
