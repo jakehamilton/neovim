@@ -18,18 +18,18 @@ in
   ];
 
   extraConfigLua = ''
-		do
-			require("actions-preview").setup({
-				diff = {
-					ignore_whitespace = true,
-				},
-				highlight_command = {
-					require("actions-preview.highlight").diff_highlight()
-				},
-				backend = { "telescope" },
-			})
-		end
-	'';
+    		do
+    			require("actions-preview").setup({
+    				diff = {
+    					ignore_whitespace = true,
+    				},
+    				highlight_command = {
+    					require("actions-preview.highlight").diff_highlight()
+    				},
+    				backend = { "telescope" },
+    			})
+    		end
+    	'';
 
   extraConfigLuaPre = ''
     do
@@ -207,6 +207,19 @@ in
       vuels.enable = true;
       yamlls.enable = true;
       zls.enable = true;
+    };
+  };
+
+  plugins.none-ls = {
+    enable = true;
+
+    sources = {
+      formatting = {
+        prettier = {
+          enable = true;
+          disableTsServerFormatter = true;
+        };
+      };
     };
   };
 }
