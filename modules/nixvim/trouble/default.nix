@@ -7,12 +7,12 @@
       auto_open = false;
       auto_fold = false;
       auto_preview = false;
-      position = "right";
-      use_diagnostic_signs = true;
+      # position = "right";
+      # use_diagnostic_signs = true;
 
-      action_keys = {
-        hover = "<leader>gh";
-      };
+      # action_keys = {
+      #   hover = "<leader>gh";
+      # };
     };
   };
 

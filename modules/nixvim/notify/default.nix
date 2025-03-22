@@ -2,8 +2,10 @@
   plugins.notify = {
     enable = true;
 
-    level = 2;
-    topDown = false;
-    maxWidth = 400;
+    settings = {
+      level = 2;
+      top_down = false;
+      max_width = 400;
+    };
   };
 }

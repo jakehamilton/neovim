@@ -3,8 +3,8 @@
     enable = true;
 
     settings = {
-      disable_when_zoomed = true;
-      no_mappings = true;
+      disable_when_zoomed = 1;
+      no_mappings = 1;
     };
 
     keymaps = [

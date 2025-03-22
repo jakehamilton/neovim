@@ -6,160 +6,159 @@ in
   plugins.lualine = {
     enable = true;
 
-    globalstatus = true;
+    settings = {
+      options = {
+        globalstatus = true;
 
-    disabledFiletypes = {
-      statusline = [
-        "dashboard"
-        "NvimTree"
-        "Trouble"
-      ];
-      winbar = [
-        "dashboard"
-        "NvimTree"
-        "Trouble"
-      ];
-    };
-
-    ignoreFocus = [
-      "dashboard"
-      "NvimTree"
-      "Trouble"
-    ];
-
-    componentSeparators = {
-      left = "⋮";
-      right = "⋮";
-    };
-
-    sectionSeparators = {
-      left = "";
-      right = "";
-    };
-
-    theme = with theme; {
-      normal = {
-        a = {
-          fg = nord2;
-          bg = nord6;
-          gui = "bold";
+        disabled_filetypes = {
+          statusline = [
+            "dashboard"
+            "NvimTree"
+            "Trouble"
+          ];
+          winbar = [
+            "dashboard"
+            "NvimTree"
+            "Trouble"
+          ];
         };
-        b.bg = nord10;
-        c.bg = nord0;
-        x.bg = nord0;
-        y.bg = nord0;
-        z = {
-          fg = nord6;
-          bg = nord10;
+
+        ignore_focus = [
+          "dashboard"
+          "NvimTree"
+          "Trouble"
+        ];
+
+        component_separators = {
+          left = "⋮";
+          right = "⋮";
+        };
+
+        section_separators = {
+          left = "";
+          right = "";
+        };
+
+        theme = with theme; {
+          normal = {
+            a = {
+              fg = nord2;
+              bg = nord6;
+              gui = "bold";
+            };
+            b.bg = nord10;
+            c.bg = nord0;
+            x.bg = nord0;
+            y.bg = nord0;
+            z = {
+              fg = nord6;
+              bg = nord10;
+            };
+          };
+          insert = {
+            a = {
+              fg = nord10;
+              bg = nord6;
+              gui = "bold";
+            };
+            b.bg = nord10;
+            c.bg = nord0;
+            x.bg = nord0;
+            y.bg = nord0;
+            z = {
+              fg = nord6;
+              bg = nord10;
+            };
+          };
+          visual = {
+            a = {
+              fg = nord15;
+              bg = nord6;
+              gui = "bold";
+            };
+            b.bg = nord10;
+            c.bg = nord0;
+            x.bg = nord0;
+            y.bg = nord0;
+            z = {
+              fg = nord6;
+              bg = nord10;
+            };
+          };
+          replace = {
+            a = {
+              fg = nord12;
+              bg = nord6;
+              gui = "bold";
+            };
+            b.bg = nord10;
+            c.bg = nord0;
+            x.bg = nord0;
+            y.bg = nord0;
+            z = {
+              fg = nord6;
+              bg = nord10;
+            };
+          };
+          inactive = {
+            a = {
+              fg = nord10;
+              bg = nord6;
+              gui = "bold";
+            };
+            b.bg = nord10;
+            c.bg = nord0;
+            x.bg = nord0;
+            y.bg = nord0;
+            z = {
+              fg = nord6;
+              bg = nord10;
+            };
+          };
         };
       };
-      insert = {
-        a = {
-          fg = nord10;
-          bg = nord6;
-          gui = "bold";
-        };
-        b.bg = nord10;
-        c.bg = nord0;
-        x.bg = nord0;
-        y.bg = nord0;
-        z = {
-          fg = nord6;
-          bg = nord10;
-        };
-      };
-      visual = {
-        a = {
-          fg = nord15;
-          bg = nord6;
-          gui = "bold";
-        };
-        b.bg = nord10;
-        c.bg = nord0;
-        x.bg = nord0;
-        y.bg = nord0;
-        z = {
-          fg = nord6;
-          bg = nord10;
-        };
-      };
-      replace = {
-        a = {
-          fg = nord12;
-          bg = nord6;
-          gui = "bold";
-        };
-        b.bg = nord10;
-        c.bg = nord0;
-        x.bg = nord0;
-        y.bg = nord0;
-        z = {
-          fg = nord6;
-          bg = nord10;
-        };
-      };
-      inactive = {
-        a = {
-          fg = nord10;
-          bg = nord6;
-          gui = "bold";
-        };
-        b.bg = nord10;
-        c.bg = nord0;
-        x.bg = nord0;
-        y.bg = nord0;
-        z = {
-          fg = nord6;
-          bg = nord10;
-        };
-      };
-    };
 
-    sections = {
-      lualine_a = [
-        {
-          name = helpers.mkRaw ''
-            function()
-              return ""
-            end
-          '';
-        }
-      ];
-      lualine_b = [
-        {
-          name = "branch";
-          icon = "";
-        }
-        { name = "diff"; }
-      ];
-      lualine_c = [ "" ];
-      lualine_x = [
-        {
-          name = "diagnostics";
-          extraConfig = {
+      sections = {
+        lualine_a = [
+          {
+            __unkeyed-1 = helpers.mkRaw ''
+              function()
+                return ""
+              end
+            '';
+          }
+        ];
+        lualine_b = [
+          {
+            __unkeyed-1 = "branch";
+            icon = "";
+          }
+          { __unkeyed-1 = "diff"; }
+        ];
+        lualine_c = [ "" ];
+        lualine_x = [
+          {
+            __unkeyed-1 = "diagnostics";
             update_in_insert = true;
-          };
-        }
-      ];
-      lualine_y = [ "" ];
-      lualine_z = [
-        { name = "%l:%c"; }
-        {
-          name = "fileformat";
-          extraConfig = {
+          }
+        ];
+        lualine_y = [ "" ];
+        lualine_z = [
+          { __unkeyed-1 = "%l:%c"; }
+          {
+            __unkeyed-1 = "fileformat";
             icon_only = true;
-          };
-        }
-      ];
-    };
+          }
+        ];
+      };
 
-    tabline = {
-      lualine_a = [ "" ];
-      lualine_b = [ "" ];
-      lualine_c = [
-        {
-          name = "windows";
-          extraConfig = {
+      tabline = {
+        lualine_a = [ "" ];
+        lualine_b = [ "" ];
+        lualine_c = [
+          {
+            __unkeyed-1 = "windows";
+
             symbols = {
               modified = "";
               readonly = "";
@@ -177,20 +176,18 @@ in
                 bg = theme.nord1;
               };
             };
-          };
 
-          separator = {
-            right = "";
-          };
-        }
-      ];
-      lualine_x = [ "" ];
-      lualine_y = [ "" ];
-      lualine_z = [
-        {
-          name = "tabs";
+            separator = {
+              right = "";
+            };
+          }
+        ];
+        lualine_x = [ "" ];
+        lualine_y = [ "" ];
+        lualine_z = [
+          {
+            __unkeyed-1 = "tabs";
 
-          extraConfig = {
             tabs_color = {
               active = {
                 fg = theme.nord6;
@@ -201,48 +198,45 @@ in
                 bg = theme.nord1;
               };
             };
-          };
-          separator = {
-            left = "";
-          };
-        }
-      ];
-    };
 
-    winbar = {
-      lualine_a = [ "" ];
-      lualine_b = [ "" ];
-      lualine_c = [
-        ""
-        {
-          name = helpers.mkRaw ''
-            require('nvim-navic').get_location
-          '';
-          extraConfig = {
+            separator = {
+              left = "";
+            };
+          }
+        ];
+      };
+
+      winbar = {
+        lualine_a = [ "" ];
+        lualine_b = [ "" ];
+        lualine_c = [
+          ""
+          {
+            __unkeyed-1 = helpers.mkRaw ''
+              require('nvim-navic').get_location
+            '';
+
             cond = helpers.mkRaw ''
               require('nvim-navic').is_available
             '';
-          };
-        }
-      ];
-      lualine_x = [ "" ];
-      lualine_y = [ "" ];
-      lualine_z = [
-        {
-          name = "filetype";
-          extraConfig = {
+          }
+        ];
+        lualine_x = [ "" ];
+        lualine_y = [ "" ];
+        lualine_z = [
+          {
+            __unkeyed-1 = "filetype";
+
             colored = false;
             icon_only = true;
-          };
 
-          color = {
-            fg = theme.nord0;
-            bg = theme.nord6;
-          };
-        }
-        {
-          name = "filename";
-          extraConfig = {
+            color = {
+              fg = theme.nord0;
+              bg = theme.nord6;
+            };
+          }
+          {
+            __unkeyed-1 = "filename";
             file_status = true;
             shorting_target = 25;
             path = 1;
@@ -253,42 +247,38 @@ in
               unnamed = " ";
               newfile = " ";
             };
-          };
 
-          separator = {
-            left = "";
-          };
+            separator = {
+              left = "";
+            };
 
-          color = {
-            fg = theme.nord6;
-            bg = theme.nord10;
-          };
-        }
-      ];
-    };
+            color = {
+              fg = theme.nord6;
+              bg = theme.nord10;
+            };
+          }
+        ];
+      };
 
-    inactiveWinbar = {
-      lualine_a = [ "" ];
-      lualine_b = [ "" ];
-      lualine_c = [ "" ];
-      lualine_x = [ "" ];
-      lualine_y = [ "" ];
-      lualine_z = [
-        {
-          name = "filetype";
-          extraConfig = {
+      inactive_winbar = {
+        lualine_a = [ "" ];
+        lualine_b = [ "" ];
+        lualine_c = [ "" ];
+        lualine_x = [ "" ];
+        lualine_y = [ "" ];
+        lualine_z = [
+          {
+            __unkeyed-1 = "filetype";
             colored = false;
             icon_only = true;
-          };
 
-          color = {
-            fg = theme.nord6;
-            bg = theme.nord1;
-          };
-        }
-        {
-          name = "filename";
-          extraConfig = {
+            color = {
+              fg = theme.nord6;
+              bg = theme.nord1;
+            };
+          }
+          {
+            __unkeyed-1 = "filename";
             file_status = true;
             path = 1;
             shorting_target = 25;
@@ -299,18 +289,18 @@ in
               unnamed = " ";
               newfile = " ";
             };
-          };
 
-          separator = {
-            left = "";
-          };
+            separator = {
+              left = "";
+            };
 
-          color = {
-            fg = theme.nord6;
-            bg = theme.nord1;
-          };
-        }
-      ];
+            color = {
+              fg = theme.nord6;
+              bg = theme.nord1;
+            };
+          }
+        ];
+      };
     };
   };
 

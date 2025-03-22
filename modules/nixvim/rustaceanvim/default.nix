@@ -1,5 +1,5 @@
 {
-  plugins.rust-tools = {
+  plugins.rustaceanvim = {
     enable = true;
   };
 }
