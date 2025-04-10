@@ -3,7 +3,7 @@
     enable = true;
 
     settings = {
-      disable_filetype = [ "TelescopePrompt" "lisp" ];
+      disable_filetype = [ "TelescopePrompt" "lisp" "markdown" "md" ];
     };
   };
 }
