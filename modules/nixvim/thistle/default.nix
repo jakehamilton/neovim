@@ -1,0 +1,4 @@
+{ ... }:
+{
+  filetype.extension.th = "lisp";
+}
